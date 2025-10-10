@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir PMB</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.form-step {
+    display: none;
+}
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+input[type="file"] {
+    padding: 3px;
+}
+textarea {
+    resize: vertical;
+}
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+button {
+    padding: 10px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.checkbox-label input {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+#verifikasiData {
+    background: #e7f3ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    max-height: 250px;
+    overflow: auto;
+}
+.statement-box {
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    padding: 15px;
+    background: #f0f8ff;
+    margin-top: 20px;
+    max-height: 200px;
+    overflow: auto;
+}
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.summary-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+.summary-category {
+    background: #d0e7ff;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.progress-container {
+    background: #ddd;
+    border-radius: 8px;
+    height: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 10px;
+    width: 0%;
+    background: #007bff;
+    transition: 0.3s;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulir Penerimaan Mahasiswa Baru (PMB)</h2>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="pmbForm" method="POST" enctype="multipart/form-data">
+
+        <!-- Step 1: Data Pribadi -->
+        <div class="form-step active">
+            <h3>Data Pribadi</h3>
+            <label>Nama Lengkap</label>
+            <input type="text" name="nama_faroj" pattern="[A-Za-z\s]+" required placeholder="Huruf saja">
+
+            <label>NIK</label>
+            <input type="text" name="nik_faroj" pattern="\d{16}" required placeholder="16 digit angka">
+
+            <label>Tempat Lahir</label>
+            <input type="text" name="tempat_lahir_faroj" required>
+
+            <label>Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir_faroj" required>
+
+            <label>Jenis Kelamin</label>
+            <input type="radio" name="jk_faroj" value="Laki-laki" required> Laki-laki
+            <input type="radio" name="jk_faroj" value="Perempuan" required> Perempuan
+
+            <label>Agama</label>
+            <select name="agama_faroj" required>
+                <option value="">--Pilih Agama--</option>
+                <option>Islam</option>
+                <option>Kristen</option>
+                <option>Katolik</option>
+                <option>Hindu</option>
+                <option>Buddha</option>
+                <option>Konghucu</option>
+            </select>
+
+            <label>Alamat Lengkap</label>
+            <textarea name="alamat_faroj" required></textarea>
+
+            <label>Nomor HP</label>
+            <input type="tel" name="hp_faroj" pattern="\d{10,15}" required placeholder="Contoh: 081234567890">
+
+            <label>Email</label>
+            <input type="email" name="email_faroj" required>
+
+            <label>Status Pernikahan</label>
+            <select name="status_faroj">
+                <option value="">--Pilih Status--</option>
+                <option>Belum Menikah</option>
+                <option>Menikah</option>
+                <option>Cerai</option>
+            </select>
+
+            <div class="buttons">
+                <button type="button" id="next1">Selanjutnya</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Data Sekolah Asal -->
+        <div class="form-step">
+            <h3>Data Sekolah Asal</h3>
+            <label>Nama Sekolah Asal</label>
+            <input type="text" name="sekolah_faroj" required>
+
+            <label>Jurusan di Sekolah</label>
+            <select name="jurusan_faroj" required>
+                <option value="">--Pilih Jurusan--</option>
+                <option>IPA</option>
+                <option>IPS</option>
+                <option>Bahasa</option>
+                <option>SMK</option>
+                <option>Lainnya</option>
+            </select>
+
+            <label>Tahun Lulus</label>
+            <input type="number" name="tahun_lulus_faroj" pattern="\d{4}" required placeholder="4 digit">
+
+            <label>NISN</label>
+            <input type="text" name="nisn_faroj" pattern="\d{10}" required placeholder="10 digit angka">
+
+            <div class="buttons">
+                <button type="button" id="prev1">Kembali</button>
+                <button type="button" id="next2">Selanjutnya</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Pilihan Program Studi -->
+        <div class="form-step">
+            <h3>Pilihan Program Studi</h3>
+            <label>Pilihan 1 Program Studi</label>
+            <select name="prodi1_faroj" required>
+                <option value="">--Pilih Program Studi--</option>
+                <option>Teknik Informatika</option>
+                <option>Manajemen</option>
+                <option>Hukum</option>
+                <option>Akuntansi</option>
+                <option>Psikologi</option>
+            </select>
+
+            <label>Pilihan 2 Program Studi</label>
+            <select name="prodi2_faroj">
+                <option value="">--Pilih Program Studi (Opsional)--</option>
+                <option>Teknik Informatika</option>
+                <option>Manajemen</option>
+                <option>Hukum</option>
+                <option>Akuntansi</option>
+                <option>Psikologi</option>
+            </select>
+
+            <label>Jalur Pendaftaran</label>
+            <input type="radio" name="jalur_faroj" value="Reguler" required> Reguler
+            <input type="radio" name="jalur_faroj" value="Prestasi" required> Prestasi
+            <input type="radio" name="jalur_faroj" value="Afirmasi" required> Afirmasi
+
+            <div class="buttons">
+                <button type="button" id="prev2">Kembali</button>
+                <button type="button" id="next3">Selanjutnya</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Dokumen Pendukung -->
+        <div class="form-step">
+            <h3>Dokumen Pendukung</h3>
+            <label>Scan Ijazah/Surat Keterangan Lulus</label>
+            <input type="file" name="ijazah_faroj" accept=".pdf,.jpg" required>
+
+            <label>Scan KTP/KK</label>
+            <input type="file" name="ktp_faroj" accept=".pdf,.jpg" required>
+
+            <label>Pas Foto Resmi</label>
+            <input type="file" name="foto_faroj" accept=".jpg,.png" required>
+
+            <div class="buttons">
+                <button type="button" id="prev3">Kembali</button>
+                <button type="button" id="next4">Selanjutnya</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Pernyataan & Persetujuan -->
+        <div class="form-step">
+            <h3>Pernyataan & Persetujuan</h3>
+
+            <div id="verifikasiData">
+                <strong>Ringkasan Data Anda:</strong>
+                <div id="dataSummary"></div>
+            </div>
+
+            <div class="statement-box">
+                <p>Saya menyatakan bahwa semua data yang saya isikan dalam formulir PMB adalah benar, lengkap, dan dapat dipertanggungjawabkan. Memberikan data palsu dapat berakibat pada pembatalan penerimaan saya sebagai mahasiswa baru.</p>
+                <p style="margin-top:10px;">Saya juga menyetujui bahwa data saya akan disimpan oleh pihak universitas sesuai ketentuan privasi dan digunakan untuk keperluan administrasi penerimaan mahasiswa baru.</p>
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="persetujuan_faroj" id="persetujuan_faroj" required>
+                Saya telah membaca dan menyetujui pernyataan di atas.
+            </label>
+
+            <div class="buttons">
+                <button type="button" id="prev4">Kembali</button>
+                <button type="submit">Kirim Data</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script>
+const steps = document.querySelectorAll(".form-step");
+let currentStep = 0;
+const progressBar = document.getElementById("progressBar");
+
+const updateProgress = () => {
+    progressBar.style.width = ((currentStep+1)/steps.length*100) + '%';
+};
+
+const showStep = (index) => {
+    steps.forEach((step, i) => step.classList.toggle("active", i===index));
+    updateProgress();
+};
+
+const validateStep = (step) => {
+    const inputs = step.querySelectorAll("input, select, textarea");
+    for (let input of inputs) {
+        if(!input.checkValidity()){
+            input.reportValidity();
+            return false;
+        }
+    }
+    return true;
+};
+
+const showSummary = () => {
+    const summaryDiv = document.getElementById("dataSummary");
+    summaryDiv.innerHTML = "";
+    const inputs = document.querySelectorAll("input, select, textarea");
+    let categories = { 'Data Pribadi':[], 'Sekolah':[], 'Program Studi':[], 'Dokumen':[] };
+
+    inputs.forEach(input=>{
+        let value = "";
+        if(input.type==="radio"){ if(input.checked) value=input.value; else return; }
+        else if(input.type==="checkbox"){ value=input.checked?"Ya":"Tidak"; }
+        else if(input.type==="file"){ value=input.files.length>0?input.files[0].name:"-"; }
+        else { value = input.value || "-"; }
+
+        if(/nama|nik|tempat|tanggal|jk|agama|alamat|hp|email|status/.test(input.name)) categories['Data Pribadi'].push({label:input.name,value});
+        else if(/sekolah|jurusan|tahun|nisn/.test(input.name)) categories['Sekolah'].push({label:input.name,value});
+        else if(/prodi|jalur/.test(input.name)) categories['Program Studi'].push({label:input.name,value});
+        else if(/ijazah|ktp|foto/.test(input.name)) categories['Dokumen'].push({label:input.name,value});
+    });
+
+    for(let cat in categories){
+        if(categories[cat].length>0){
+            const divCat = document.createElement("div");
+            divCat.classList.add("summary-category");
+            divCat.textContent = cat;
+            summaryDiv.appendChild(divCat);
+
+            const table = document.createElement("table");
+            table.classList.add("summary-table");
+            categories[cat].forEach(item=>{
+                const row = document.createElement("tr");
+                const tdLabel = document.createElement("td");
+                tdLabel.style.fontWeight="bold";
+                tdLabel.textContent = item.label.replace("_faroj","");
+                const tdValue = document.createElement("td");
+                tdValue.textContent = item.value;
+                row.appendChild(tdLabel);
+                row.appendChild(tdValue);
+                table.appendChild(row);
+            });
+            summaryDiv.appendChild(table);
+        }
+    }
+};
+
+// Tombol selanjutnya
+document.getElementById("next1").addEventListener("click",()=>{ if(validateStep(steps[currentStep])){ currentStep++; showStep(currentStep); }});
+document.getElementById("next2").addEventListener("click",()=>{ if(validateStep(steps[currentStep])){ currentStep++; showStep(currentStep); }});
+document.getElementById("next3").addEventListener("click",()=>{ if(validateStep(steps[currentStep])){ currentStep++; showStep(currentStep); }});
+document.getElementById("next4").addEventListener("click",()=>{ if(validateStep(steps[currentStep])){ currentStep++; showStep(currentStep); showSummary(); }});
+
+// Tombol kembali
+document.getElementById("prev1").addEventListener("click",()=>{ currentStep--; showStep(currentStep); });
+document.getElementById("prev2").addEventListener("click",()=>{ currentStep--; showStep(currentStep); });
+document.getElementById("prev3").addEventListener("click",()=>{ currentStep--; showStep(currentStep); });
+document.getElementById("prev4").addEventListener("click",()=>{ currentStep--; showStep(currentStep); });
+
+// Checkbox persetujuan menampilkan summary ulang
+document.getElementById("persetujuan_faroj").addEventListener("change",()=>{ if(document.getElementById("persetujuan_faroj").checked){ showSummary(); } });
+
+showStep(currentStep);
+</script>
+
+</body>
+</html>

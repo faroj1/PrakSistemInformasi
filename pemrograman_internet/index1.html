@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir PMB Multi-Step</title>
+<style>
+body { font-family: Arial, sans-serif; background-color: #f0f2f5; margin:0; padding:20px; }
+h1 { text-align: center; color: #333; }
+form { max-width: 700px; margin:auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+.tab { display: none; }
+label { display:block; margin-top:15px; font-weight:bold; }
+input, select, textarea { width:100%; padding:8px; margin-top:5px; border-radius:4px; border:1px solid #ccc; box-sizing:border-box; }
+input[type="radio"], input[type="checkbox"] { width:auto; margin-top:0; }
+button { background:#007bff; color:#fff; border:none; padding:10px 20px; font-size:16px; border-radius:4px; cursor:pointer; margin-top:20px; }
+button:hover { background:#0056b3; }
+#progressContainer { width:100%; background:#ccc; border-radius:5px; margin-bottom:20px; height:10px; }
+#progressBar { width:0%; height:100%; background:#007bff; border-radius:5px; transition:width 0.3s; }
+#previewModal { display:none; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
+#previewModal div { background:#fff; padding:20px; border-radius:8px; max-width:700px; width:90%; overflow:auto; }
+</style>
+</head>
+<body>
+
+<h1>Formulir PMB Multi-Step</h1>
+
+<div id="progressContainer"><div id="progressBar"></div></div>
+
+<form id="pmbForm">
+
+  <!-- Step 1: Data Pribadi -->
+  <div class="tab">
+    <h2>I. Data Pribadi</h2>
+    <label for="nama_faroj">Nama Lengkap *</label>
+    <input type="text" name="nama_faroj" id="nama_faroj" pattern="[A-Za-z\s]+" required placeholder="Hanya huruf">
+
+    <label for="nik_faroj">NIK *</label>
+    <input type="text" name="nik_faroj" id="nik_faroj" pattern="\d{16}" required placeholder="16 digit">
+
+    <label for="tempat_lahir_faroj">Tempat Lahir *</label>
+    <input type="text" name="tempat_lahir_faroj" id="tempat_lahir_faroj" required>
+
+    <label for="tanggal_lahir_faroj">Tanggal Lahir *</label>
+    <input type="date" name="tanggal_lahir_faroj" id="tanggal_lahir_faroj" required>
+
+    <label>Jenis Kelamin *</label>
+    <input type="radio" name="jenis_kelamin_faroj" value="Laki-laki" required> Laki-laki
+    <input type="radio" name="jenis_kelamin_faroj" value="Perempuan" required> Perempuan
+
+    <label for="agama_faroj">Agama *</label>
+    <select name="agama_faroj" id="agama_faroj" required>
+      <option value="">--Pilih Agama--</option>
+      <option value="Islam">Islam</option>
+      <option value="Kristen">Kristen</option>
+      <option value="Katolik">Katolik</option>
+      <option value="Hindu">Hindu</option>
+      <option value="Buddha">Buddha</option>
+      <option value="Konghucu">Konghucu</option>
+    </select>
+
+    <label for="alamat_faroj">Alamat Lengkap *</label>
+    <textarea name="alamat_faroj" id="alamat_faroj" rows="3" required></textarea>
+
+    <label for="no_hp_faroj">Nomor HP *</label>
+    <input type="tel" name="no_hp_faroj" id="no_hp_faroj" pattern="[0-9]{10,15}" required placeholder="081234567890">
+
+    <label for="email_faroj">Email *</label>
+    <input type="email" name="email_faroj" id="email_faroj" required placeholder="contoh@email.com">
+
+    <label for="status_pernikahan_faroj">Status Pernikahan</label>
+    <select name="status_pernikahan_faroj" id="status_pernikahan_faroj">
+      <option value="Belum Menikah">Belum Menikah</option>
+      <option value="Menikah">Menikah</option>
+      <option value="Cerai">Cerai</option>
+    </select>
+  </div>
+
+  <!-- Step 2: Data Sekolah -->
+  <div class="tab">
+    <h2>II. Data Sekolah Asal</h2>
+    <label for="nama_sekolah_faroj">Nama Sekolah *</label>
+    <input type="text" name="nama_sekolah_faroj" id="nama_sekolah_faroj" required>
+
+    <label for="jurusan_sekolah_faroj">Jurusan di Sekolah *</label>
+    <select name="jurusan_sekolah_faroj" id="jurusan_sekolah_faroj" required onchange="checkSMK()">
+      <option value="">--Pilih Jurusan--</option>
+      <option value="IPA">IPA</option>
+      <option value="IPS">IPS</option>
+      <option value="Bahasa">Bahasa</option>
+      <option value="SMK">SMK</option>
+      <option value="Lainnya">Lainnya</option>
+    </select>
+
+    <!-- Kolom Nama Jurusan SMK, awalnya disembunyikan -->
+    <div id="smkJurusanContainer" style="display:none;">
+      <label for="nama_jurusan_smk_faroj">Nama Jurusan SMK *</label>
+      <input type="text" name="nama_jurusan_smk_faroj" id="nama_jurusan_smk_faroj" placeholder="Contoh: Teknik Komputer Jaringan">
+    </div>
+
+    <label for="tahun_lulus_faroj">Tahun Lulus *</label>
+    <input type="number" name="tahun_lulus_faroj" id="tahun_lulus_faroj" pattern="\d{4}" required placeholder="4 digit">
+
+    <label for="nisn_faroj">NISN *</label>
+    <input type="text" name="nisn_faroj" id="nisn_faroj" pattern="\d{10}" required placeholder="10 digit">
+  </div>
+
+  <!-- Step 3: Pilihan Program Studi -->
+  <div class="tab">
+    <h2>III. Pilihan Program Studi</h2>
+    <label for="prodi1_faroj">Pilihan 1 *</label>
+    <select name="prodi1_faroj" id="prodi1_faroj" required>
+      <option value="">--Pilih Program Studi--</option>
+      <option value="Teknik Informatika">Teknik Informatika</option>
+      <option value="Sistem Informasi">Sistem Informasi</option>
+      <option value="Manajemen">Manajemen</option>
+      <option value="Hukum">Hukum</option>
+      <option value="Akuntansi">Akuntansi</option>
+    </select>
+
+    <label for="prodi2_faroj">Pilihan 2 (Opsional)</label>
+    <select name="prodi2_faroj" id="prodi2_faroj">
+      <option value="">--Pilih Program Studi--</option>
+      <option value="Teknik Informatika">Teknik Informatika</option>
+      <option value="Sistem Informasi">Sistem Informasi</option>
+      <option value="Manajemen">Manajemen</option>
+      <option value="Hukum">Hukum</option>
+      <option value="Akuntansi">Akuntansi</option>
+    </select>
+
+    <label>Jalur Pendaftaran *</label>
+    <input type="radio" name="jalur_faroj" value="Reguler" required> Reguler
+    <input type="radio" name="jalur_faroj" value="Prestasi" required> Prestasi
+    <input type="radio" name="jalur_faroj" value="Afirmasi" required> Afirmasi
+  </div>
+
+  <!-- Step 4: Dokumen & Persetujuan -->
+  <div class="tab">
+    <h2>IV. Dokumen & Persetujuan</h2>
+    <label for="ijazah_faroj">Scan Ijazah/Surat Keterangan Lulus *</label>
+    <input type="file" name="ijazah_faroj" id="ijazah_faroj" accept=".pdf,.jpg" required>
+
+    <label for="ktp_kk_faroj">Scan KTP/KK *</label>
+    <input type="file" name="ktp_kk_faroj" id="ktp_kk_faroj" accept=".pdf,.jpg" required>
+
+    <label for="pas_foto_faroj">Pas Foto Resmi *</label>
+    <input type="file" name="pas_foto_faroj" id="pas_foto_faroj" accept=".jpg,.png" required>
+
+    <label>
+      <input type="checkbox" name="persetujuan_faroj" required>
+      Saya menyatakan bahwa semua data yang saya isikan adalah benar dan dapat dipertanggungjawabkan.
+    </label>
+  </div>
+
+  <!-- Navigasi -->
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+
+</form>
+
+<!-- Preview Modal -->
+<div id="previewModal">
+  <div>
+    <h2>Preview Data PMB</h2>
+    <div id="previewContent" style="max-height:400px; overflow:auto;"></div>
+    <button onclick="closePreview()">Tutup</button>
+    <button onclick="confirmSubmit()">Konfirmasi & Kirim</button>
+  </div>
+</div>
+
+<script>
+let currentTab = 0;
+showTab(currentTab);
+
+function showTab(n) {
+  let x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  document.getElementById("prevBtn").style.display = n==0?"none":"inline";
+  document.getElementById("nextBtn").innerHTML = n==(x.length-1)?"Submit":"Next";
+  updateProgress(n);
+}
+
+function nextPrev(n){
+  let x = document.getElementsByClassName("tab");
+  if(n==1 && !validateForm()) return false;
+  x[currentTab].style.display = "none";
+  currentTab += n;
+  if(currentTab>=x.length){ showPreview(); return false; }
+  showTab(currentTab);
+}
+
+function validateForm(){
+  let x = document.getElementsByClassName("tab")[currentTab];
+  let inputs = x.querySelectorAll("input, select, textarea");
+  for(let i=0;i<inputs.length;i++){
+    if(inputs[i].hasAttribute("required") && inputs[i].type!="checkbox"){
+      if(inputs[i].value==""){ alert("Harap isi semua field wajib."); return false; }
+    }
+    if(inputs[i].type=="checkbox" && inputs[i].hasAttribute("required") && !inputs[i].checked){
+      alert("Harap centang persetujuan."); return false;
+    }
+  }
+  return true;
+}
+
+function updateProgress(n){
+  let total = document.getElementsByClassName("tab").length;
+  let percent = ((n+1)/total)*100;
+  document.getElementById("progressBar").style.width = percent+"%";
+}
+
+// Dynamic SMK
+function checkSMK(){
+  const jurusan = document.getElementById("jurusan_sekolah_faroj").value;
+  const container = document.getElementById("smkJurusanContainer");
+  const input = document.getElementById("nama_jurusan_smk_faroj");
+  if(jurusan === "SMK"){
+    container.style.display = "block";
+    input.setAttribute("required", "required");
+  } else {
+    container.style.display = "none";
+    input.removeAttribute("required");
+    input.value = "";
+  }
+}
+
+// Preview
+function showPreview(){
+  const form = document.getElementById("pmbForm");
+  const formData = new FormData(form);
+
+  const labels = {
+    nama_faroj: "Nama Lengkap",
+    nik_faroj: "NIK",
+    tempat_lahir_faroj: "Tempat Lahir",
+    tanggal_lahir_faroj: "Tanggal Lahir",
+    jenis_kelamin_faroj: "Jenis Kelamin",
+    agama_faroj: "Agama",
+    alamat_faroj: "Alamat Lengkap",
+    no_hp_faroj: "Nomor HP",
+    email_faroj: "Email",
+    status_pernikahan_faroj: "Status Pernikahan",
+    nama_sekolah_faroj: "Nama Sekolah",
+    jurusan_sekolah_faroj: "Jurusan di Sekolah",
+    nama_jurusan_smk_faroj: "Nama Jurusan SMK",
+    tahun_lulus_faroj: "Tahun Lulus",
+    nisn_faroj: "NISN",
+    prodi1_faroj: "Pilihan 1 Program Studi",
+    prodi2_faroj: "Pilihan 2 Program Studi",
+    jalur_faroj: "Jalur Pendaftaran",
+    ijazah_faroj: "Scan Ijazah/Surat Keterangan Lulus",
+    ktp_kk_faroj: "Scan KTP/KK",
+    pas_foto_faroj: "Pas Foto Resmi",
+    persetujuan_faroj: "Persetujuan Data"
+  };
+
+  let html = "<ul style='line-height:1.6;'>";
+  for (let [key, value] of formData.entries()){
+    let label = labels[key] || key;
+    if(value instanceof File){
+      html += `<li><strong>${label}:</strong> ${value.name}</li>`;
+    } else if(key === "persetujuan_faroj"){
+      html += `<li><strong>${label}:</strong> ${value ? "Ya" : "Tidak"}</li>`;
+    } else {
+      html += `<li><strong>${label}:</strong> ${value}</li>`;
+    }
+  }
+  html += "</ul>";
+  document.getElementById("previewContent").innerHTML = html;
+  document.getElementById("previewModal").style.display="flex";
+}
+
+function closePreview(){
+  document.getElementById("previewModal").style.display="none";
+}
+
+function confirmSubmit(){
+  closePreview();
+  alert("Data berhasil dikirim!"); 
+  document.getElementById("pmbForm").reset();
+  currentTab = 0;
+  showTab(currentTab);
+}
+</script>
+
+</body>
+</html>
