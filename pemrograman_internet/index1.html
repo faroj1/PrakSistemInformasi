@@ -165,7 +165,11 @@ button:hover { background:#0056b3; }
   </div>
 
 </form>
-
+<!-- Footer -->
+<footer>
+  &copy; <span id="year"></span> Faroj Ainurridlo. All rights reserved. | <a href="#">Website PMB</a>
+</footer>
+  
 <!-- Preview Modal -->
 <div id="previewModal">
   <div>
@@ -288,10 +292,13 @@ function confirmSubmit(){
   document.getElementById("pmbForm").reset();
   currentTab = 0;
   showTab(currentTab);
+  // Set year otomatis
+document.getElementById("year").textContent = new Date().getFullYear();
 }
 </script>
 
 </body>
 </html>
+
 
 
