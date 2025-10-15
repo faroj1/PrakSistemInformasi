@@ -1,0 +1,246 @@
+
+<!--Nama : Faroj Ainurridlo NIM : 2303010075-->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Input Data KTP</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a89cc, #82ccdd);
+      color: #2d3436;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background: #fff;
+      width: 95%;
+      max-width: 650px;
+      padding: 35px 45px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0a3d62;
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #2d3436;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="file"],
+    input[list],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: 0.3s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #0a3d62;
+      box-shadow: 0 0 6px rgba(10, 61, 98, 0.4);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .radio-group {
+      margin-top: 10px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      margin-right: 15px;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      background: #0a3d62;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      margin: 5px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #3c6382;
+    }
+
+    input[type="reset"]:hover {
+      background: #d63031;
+    }
+
+    ::placeholder {
+      color: #aaa;
+    }
+
+    .radio-group {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* jarak antar elemen */
+  flex-wrap: wrap; /* agar responsif di layar kecil */
+}
+
+.radio-group label {
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <form action="simpanktp.php" method="post" autocomplete="on">
+    <h2>Form Input Data KTP</h2>
+    <fieldset>
+      <legend><b>Data Pribadi</b></legend>
+
+      <label for="nik">NIK:</label>
+      <input type="text" id="nik" name="nik" pattern="\d{16}" minlength="16" maxlength="16"
+        placeholder="Masukkan 16 digit NIK Anda" required
+        title="NIK harus terdiri dari 16 digit angka"
+        autofocus oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" required />
+
+      <label for="tempat_lahir">Tempat Lahir:</label>
+      <input type="text" id="tempat_lahir" name="tempat_lahir" maxlength="35"
+        placeholder="Masukkan Tempat Lahir Anda" required />
+
+      <label for="tanggal_lahir">Tanggal Lahir:</label>
+      <input type="date" id="tanggal_lahir" name="tanggal_lahir" required />
+
+      <label>Jenis Kelamin:</label>
+      <div class="radio-group" >
+        <input type="radio" id="laki" name="jenis_kelamin" value="Laki-laki" required />
+        <label for="laki">Laki-laki</label>
+        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" />
+        <label for="perempuan">Perempuan</label>
+      </div>
+
+      <label for="gol_darah">Golongan Darah:</label>
+      <select id="gol_darah" name="gol_darah" required>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="AB">AB</option>
+        <option value="O">O</option>
+      </select>
+
+      <label for="alamat">Alamat:</label>
+      <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap" required></textarea>
+
+      <label for="rtrw">RT/RW:</label>
+      <input type="text" id="rtrw" name="rtrw" placeholder="Contoh: 001/002" required />
+
+      <label for="keldesa">Kel/Desa:</label>
+      <input type="text" id="keldesa" name="keldesa" placeholder="Masukkan Kelurahan/Desa" required />
+
+      <label for="kecamatan">Kecamatan:</label>
+      <input type="text" id="kecamatan" name="kecamatan" placeholder="Masukkan Kecamatan" required />
+
+      <label for="kab/kota">Kab/Kota:</label>
+      <input type="text" id="kab/kota" name="kab/kota" placeholder="Masukkan Kabupaten/Kota" required />
+
+      <label for="provinsi">Provinsi:</label>
+      <input type="text" id="provinsi" name="provinsi" placeholder="Masukkan Provinsi Anda" required />
+
+      <label for="agama">Agama:</label>
+      <select id="agama" name="agama" required>
+        <option value="" disabled selected>Pilih Agama Anda</option>
+        <option value="Islam">Islam</option>
+        <option value="Kristen">Kristen</option>
+        <option value="Katolik">Katolik</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Buddha">Buddha</option>
+        <option value="Konghucu">Konghucu</option>
+      </select>
+
+      <label for="status">Status Pernikahan:</label>
+      <select id="status" name="status" required>
+        <option value="" disabled selected>Pilih Status Pernikahan Anda</option>
+        <option value="Belum Menikah">Belum Menikah</option>
+        <option value="Sudah Menikah">Sudah Menikah</option>
+        <option value="Cerai">Cerai</option>
+      </select>
+
+      <label for="pekerjaan">Pekerjaan:</label>
+      <input list="daftar_pekerjaan" id="pekerjaan" name="pekerjaan" class="seragam" placeholder="Ketik atau pilih pekerjaan" required />
+      <datalist id="daftar_pekerjaan">
+        <option value="TNI">
+        <option value="POLRI">
+        <option value="PNS">
+        <option value="Wiraswasta">
+        <option value="Guru">
+        <option value="Dosen">
+        <option value="Buruh">
+        <option value="Petani">
+        <option value="Lainnya">
+      </datalist>
+
+      <label for="kewarganegaraan">Kewarganegaraan:</label>
+      <select id="kewarganegaraan" name="kewarganegaraan" required>
+        <option value="" disabled selected>Pilih Kewarganegaraan</option>
+        <option value="WNI">WNI</option>
+        <option value="WNA">WNA</option>
+      </select>
+
+      <label for="berlaku_hingga">Berlaku Hingga:</label>
+      <input type="date" id="berlaku_hingga" name="berlaku_hingga" required />
+
+      <label for="foto">Input Foto:</label>
+      <input type="file" id="foto" name="foto" accept="image/*" required />
+
+      <label for="tanggal_buat">Tanggal Buat:</label>
+      <input type="date" id="tanggal_buat" name="tanggal_buat" required />
+
+      <div class="button-group">
+        <input type="reset" value="Reset" />
+        <input type="submit" value="Simpan" />
+      </div>
+    </fieldset>
+  </form>
+</body>
+</html>
