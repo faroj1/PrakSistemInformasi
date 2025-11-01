@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Kami - FashionKu</title>
+<style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #fdfdfd; color: #333; line-height: 1.6; }
+    
+    /* NAVBAR */
+    .navbar { display: flex; justify-content: center; align-items: center; background-color: #333; padding: 10px 0; flex-wrap: wrap; }
+    .navbar a { color: white; padding: 14px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+    .navbar a:hover { background-color: #ddd; color: black; }
+
+    /* HEADER */
+    .header { text-align: center; padding: 60px 20px; background: #f4f4f4; }
+    .header h1 { margin: 0; font-size: 40px; color: #333; }
+    .header p { margin: 10px 0 0; color: #666; font-size: 18px; }
+
+    /* CONTENT */
+    .content { max-width: 1000px; margin: 30px auto; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .content h2 { margin-top: 30px; color: #333; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }
+    .content p, .content ul { margin-bottom: 20px; }
+    .content ul { padding-left: 20px; }
+    .content ul li { margin-bottom: 10px; }
+
+    /* TIMELINE / VISUAL VALUE */
+    .values {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .value-box {
+        flex: 1 1 250px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    .value-box:hover { transform: translateY(-5px); }
+    .value-box h3 { margin-bottom: 10px; color: #333; }
+    .value-box p { color: #555; }
+
+    /* FOOTER */
+    .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+
+    /* RESPONSIVE */
+    @media screen and (max-width: 768px) {
+        .values { flex-direction: column; }
+    }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Beranda</a>
+    <a href="produk.html">Produk</a>
+    <a href="tentang.html">Tentang Kami</a>
+    <a href="kontak.html">Kontak</a>
+</div>
+
+<div class="header">
+    <h1>Tentang FashionKu</h1>
+    <p>Menyediakan fashion stylish dan nyaman untuk setiap kesempatan</p>
+</div>
+
+<div class="content">
+    <h2>Siapa Kami?</h2>
+    <p>FashionKu adalah toko fashion modern yang menyediakan koleksi pakaian berkualitas tinggi untuk pria, wanita, dan anak-anak. Sejak berdiri, kami selalu mengutamakan kualitas bahan, kenyamanan, dan desain yang mengikuti tren global terbaru.</p>
+
+    <h2>Visi & Misi</h2>
+    <p><strong>Visi:</strong> Menjadi toko fashion online terpercaya dan inovatif dengan produk berkualitas yang memuaskan pelanggan di seluruh Indonesia.</p>
+    <p><strong>Misi:</strong></p>
+    <ul>
+        <li>Menyediakan produk fashion berkualitas tinggi dengan harga terjangkau.</li>
+        <li>Mengutamakan pelayanan pelanggan yang profesional, ramah, dan cepat.</li>
+        <li>Selalu mengikuti tren fashion terbaru dan menghadirkan desain eksklusif.</li>
+        <li>Membangun pengalaman belanja online yang nyaman dan aman bagi pelanggan.</li>
+    </ul>
+
+    <h2>Nilai Perusahaan</h2>
+    <div class="values">
+        <div class="value-box">
+            <h3>Kualitas</h3>
+            <p>Setiap produk dibuat dengan bahan terbaik dan standar kualitas tinggi.</p>
+        </div>
+        <div class="value-box">
+            <h3>Inovasi</h3>
+            <p>Kami terus mengikuti tren terbaru untuk menghadirkan desain modern dan stylish.</p>
+        </div>
+        <div class="value-box">
+            <h3>Layanan</h3>
+            <p>Pelayanan pelanggan yang cepat, responsif, dan profesional selalu menjadi prioritas kami.</p>
+        </div>
+    </div>
+
+    <h2>Alamat & Kontak</h2>
+    <p>Jl. Fashion No.10, Kota Tasikmalaya, Indonesia</p>
+    <p>Email: support@fashionku.com | Telepon: +62 813-XXXX-XXXX</p>
+</div>
+
+<div class="footer" style="background-color: #333; color: #fff; padding: 20px 10px; text-align: center; font-family: Arial, sans-serif;">
+    <p style="margin: 5px 0;">&copy; 2025 <strong>FashionKu</strong> | Semua Hak Dilindungi</p>
+    <p style="margin: 5px 0; color: #aaa; font-size: 14px;">Powered by <a href="https://www.instagram.com/farojainurridlo_" style="color: #f39c12; text-decoration: none;">Faroj Ainurridlo</a></p>
+</div>
+
+</body>
+</html>

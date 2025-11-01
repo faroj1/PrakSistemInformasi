@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak - FashionKu</title>
+<style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #fdfdfd; color: #333; }
+
+    /* NAVBAR */
+    .navbar { display: flex; justify-content: center; align-items: center; background-color: #333; padding: 10px 0; flex-wrap: wrap; }
+    .navbar a { color: white; padding: 14px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+    .navbar a:hover { background-color: #ddd; color: black; }
+
+    /* HEADER */
+    .header { text-align: center; padding: 50px 20px; background: #f4f4f4; }
+    .header h1 { margin: 0; font-size: 36px; }
+    .header p { margin: 10px 0 0; color: #666; }
+
+    /* CONTENT */
+    .content { max-width: 600px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .content h2 { margin-top: 0; text-align: center; }
+    .content form { display: flex; flex-direction: column; gap: 15px; }
+    .content input, .content textarea {
+        padding: 10px; border: 1px solid #ccc; border-radius: 8px;
+        font-size: 16px; width: 100%;
+        transition: border 0.3s, box-shadow 0.3s;
+    }
+    .content input:focus, .content textarea:focus {
+        border-color: #333;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        outline: none;
+    }
+    .content button {
+        padding: 12px; background-color: #333; color: #fff;
+        border: none; border-radius: 8px; cursor: pointer;
+        font-size: 16px; transition: background 0.3s;
+    }
+    .content button:hover { background-color: #555; }
+
+    /* MEDIA SOSIAL */
+    .socials {
+        display: flex; justify-content: center; gap: 20px; margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    .socials a {
+        display: inline-flex; justify-content: center; align-items: center;
+        width: 40px; height: 40px; background-color: #333; color: white; border-radius: 50%;
+        text-decoration: none; font-size: 20px; transition: background 0.3s, transform 0.3s;
+    }
+    .socials a:hover { background-color: #555; transform: scale(1.1); }
+
+    /* FOOTER */
+    .footer { background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 30px; }
+
+    /* RESPONSIVE */
+    @media screen and (max-width: 500px) {
+        .socials { gap: 15px; }
+        .socials a { width: 35px; height: 35px; font-size: 18px; }
+    }
+</style>
+<!-- ICONS VIA FONT AWESOME CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Beranda</a>
+    <a href="produk.html">Produk</a>
+    <a href="tentang.html">Tentang Kami</a>
+    <a href="kontak.html">Kontak</a>
+</div>
+
+<div class="header">
+    <h1>Kontak FashionKu</h1>
+    <p>Hubungi kami untuk pertanyaan atau saran</p>
+</div>
+
+<div class="content">
+    <h2>Form Kontak</h2>
+    <form action="https://formspree.io/f/mwpopboo" method="POST">
+        <input type="text" name="nama" placeholder="Nama Anda" required>
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <textarea name="pesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+        <button type="submit">Kirim Pesan</button>
+    </form><br>
+
+    
+    <h2>Media Sosial</h2>
+    <div class="socials">
+        <a href="https://www.facebook.com/farojainurridlo.jhh" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/farojainurridlo_" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@faroj_" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+</div>
+
+<div class="footer" style="background-color: #333; color: #fff; padding: 20px 10px; text-align: center; font-family: Arial, sans-serif;">
+    <p style="margin: 5px 0;">&copy; 2025 <strong>FashionKu</strong> | Semua Hak Dilindungi</p>
+    <p style="margin: 5px 0; color: #aaa; font-size: 14px;">Powered by <a href="https://www.instagram.com/farojainurridlo_" style="color: #f39c12; text-decoration: none;">Faroj Ainurridlo</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum Menu Responsif</title>
+    <style>
+        /* Reset dasar dan pengaturan kotak */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        /* Navigasi Utama */
+        .topnav {
+            overflow: hidden;
+            background-color: navy;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Tautan dalam navbar */
+        .topnav a {
+            float: left;
+            display: block;
+            color: f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        /* Efek hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+        /* Responsif:Ubah jadi vertikal saat layar kecil */
+        @media screen and (max-width: 600px) {
+            .topnav a {
+                float: none;
+                width: 100%;
+                text-align: left;
+                padding-left: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 style="margin-bottom: 10px;">Menu Responsif</h2>
+    <p style="margin-bottom: 20px;">
+        Pada Praktikum ini, kita akan membuat menu navigasi horizontal yang otomatis berubah menjadi vertikal ketika lebar layar kurang dari atau sama dengan 600px.
+    </p>
+
+    <div class="topnav">
+        <a href="praktikum5.html">Home</a>
+        <a href="praktikum1.html">Menu 1</a>
+        <a href="praktikum2.html">Menu 2</a>
+        <a href="praktikum3.html">Menu 3</a>
+        <a href="praktikum4.html">Menu 4</a>
+    </div>
+
+    <p style="margin-top:30px;">
+        <strong>Catatan:</strong> Coba Ubah ukuran jendela browser. Saat lebar layar di bawah 600px, setiap menu akan ditampilkan ke bawah (vertikal).
+    </p>
+</body>
+</html>

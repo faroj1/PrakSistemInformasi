@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produk - FashionKu</title>
+<style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #fdfdfd; }
+    .navbar { display: flex; justify-content: center; align-items: center; background-color: #333; padding: 10px 0; flex-wrap: wrap; }
+    .navbar a { color: white; padding: 14px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+    .navbar a:hover { background-color: #ddd; color: black; }
+    .header { text-align: center; padding: 50px 20px; background: #f4f4f4; }
+    .header h1 { margin: 0; font-size: 36px; color: #333; }
+    .header p { margin: 10px 0 0; color: #666; }
+    .produk { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center; padding: 15px; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
+    .card h3 { margin: 10px 0; }
+    .card p { color: #555; }
+    .btn { background-color: #333; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+    .btn:hover { background-color: #555; }
+    .footer { background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 30px; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Beranda</a>
+    <a href="produk.html">Produk</a>
+    <a href="tentang.html">Tentang Kami</a>
+    <a href="kontak.html">Kontak</a>
+</div>
+
+<div class="header">
+    <h1>Produk FashionKu</h1>
+    <p>Koleksi terbaru kami untuk pria, wanita, dan anak-anak</p>
+</div>
+
+<div class="produk">
+    <div class="card" data-name="Kemeja Pria Klasik" data-price="Rp 149.000">
+        <img src="image/kemeja.jpeg" alt="Kemeja Pria">
+        <h3>Kemeja Pria Klasik</h3>
+        <p>Rp 149.000</p>
+        <button class="btn buy-btn">Beli Sekarang</button>
+    </div>
+    <div class="card" data-name="Dress Wanita Elegan" data-price="Rp 179.000">
+        <img src="image/dress.jpg" alt="Dress Wanita">
+        <h3>Dress Wanita Elegan</h3>
+        <p>Rp 179.000</p>
+        <button class="btn buy-btn">Beli Sekarang</button>
+    </div>
+    <div class="card" data-name="Kaos Anak Lucu" data-price="Rp 89.000">
+        <img src="image/kaos_anak.jpg" alt="Kaos Anak">
+        <h3>Kaos Anak Lucu</h3>
+        <p>Rp 89.000</p>
+        <button class="btn buy-btn">Beli Sekarang</button>
+    </div>
+</div>
+
+<div class="footer" style="background-color: #333; color: #fff; padding: 20px 10px; text-align: center; font-family: Arial, sans-serif;">
+    <p style="margin: 5px 0;">&copy; 2025 <strong>FashionKu</strong> | Semua Hak Dilindungi</p>
+    <p style="margin: 5px 0; color: #aaa; font-size: 14px;">Powered by <a href="https://www.instagram.com/farojainurridlo_" style="color: #f39c12; text-decoration: none;">Faroj Ainurridlo</a></p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const whatsappNumber = "628986735615"; // ganti dengan nomor WhatsApp (format internasional tanpa +)
+        const buyButtons = document.querySelectorAll('.buy-btn');
+
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                if (!card) return;
+
+                // Ambil nama dan harga dari atribut data
+                const productName = card.getAttribute('data-name') || "Produk";
+                const productPrice = card.getAttribute('data-price') || "";
+
+                // Buat pesan untuk WhatsApp
+                const message = `Halo, saya ingin membeli produk: ${productName} ${productPrice}`;
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                // Buka WhatsApp di tab baru
+                window.open(url, '_blank');
+            });
+        });
+    });
+</script>
+</body>
+</html>

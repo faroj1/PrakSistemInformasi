@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Pakaian FashionKu</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #fdfdfd;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+        position: relative;
+        height: 300px;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 30px;
+        align-items: center;
+        overflow: hidden;
+        background: url('image/header-fashion.jpg') no-repeat center center/cover;
+        animation: headerZoom 15s ease-out forwards;
+    }
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.25);
+        z-index: 1;
+    }
+    .header h1 { font-size: 48px; margin: 10px 0; text-shadow: 2px 2px 6px rgba(0,0,0,0.5); position: relative; z-index: 2; animation: headerTextIn 1.5s ease-out; }
+    .header p { font-size: 20px; text-shadow: 1px 1px 4px rgba(0,0,0,0.4); position: relative; z-index: 2; animation: headerTextIn 1.5s ease-out 0.3s backwards; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        position: relative;
+        padding: 10px 0;
+        flex-wrap: wrap;
+    }
+    .navbar a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .navbar a:hover { background-color: #ddd; color: black; }
+
+    /* ===== KONTEN ===== */
+    .row { display: flex; flex-wrap: wrap; }
+
+    /* Sidebar Kategori */
+    .side { flex: 25%; background-color: #f4f4f4; padding: 20px; }
+    .side h2 { text-align: center; }
+    .side ul { list-style-type: none; padding: 0; }
+    .side ul li {
+        background: #fff; margin: 10px 0; padding: 10px;
+        text-align: center; border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.1);
+        transition: background 0.3s, transform 0.2s;
+        cursor: pointer;
+    }
+    .side ul li:hover { background-color: #e0e0e0; transform: translateY(-2px); }
+    .side ul li.active { background-color: #333; color: #fff; }
+
+    /* Dropdown mobile kategori */
+    .mobile-category {
+        display: none;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background: #fff url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+        background-size: 18px 18px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        appearance: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .mobile-category:hover { box-shadow: 0 6px 10px rgba(0,0,0,0.15); }
+    .mobile-category:focus {
+        outline: none;
+        border-color: #333;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Produk */
+    .main { flex: 75%; background-color: #fff; padding: 20px; }
+    .produk {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        background: #f9f9f9; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        text-align: center; padding: 15px; transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
+    .card h3 { margin: 10px 0; }
+    .card p { color: #555; }
+    .btn { background-color: #333; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:hover { background-color: #555; }
+
+    /* Pesan produk tidak tersedia */
+    .no-products {
+        text-align: center;
+        color: #555;
+        font-size: 18px;
+        margin-top: 30px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer { background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 30px; }
+
+    /* ===== ANIMASI HEADER ===== */
+    @keyframes headerZoom { from { transform: scale(1); } to { transform: scale(1.02); } }
+    @keyframes headerTextIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ===== RESPONSIF ===== */
+    @media screen and (max-width: 700px) {
+        .row { flex-direction: column; }
+        .side { display: none; } 
+        .mobile-category { display: block; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <h1>FashionKu</h1>
+        <p>Tampil Gaya Setiap Hari ✨</p>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <div class="navbar">
+        <a href="index.html">Beranda</a>
+        <a href="produk.html">Produk</a>
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="kontak.html">Kontak</a>
+    </div>
+
+    <!-- ===== DROPDOWN KATEGORI MOBILE ===== -->
+    <select class="mobile-category" onchange="filterCategory(this.value)">
+        <option value="" disabled selected>Pilih Kategori</option>
+        <option value="">Semua Produk</option>
+        <option value="Baju Pria">Baju Pria</option>
+        <option value="Baju Wanita">Baju Wanita</option>
+        <option value="Anak-anak">Anak-anak</option>
+        <option value="Aksesoris">Aksesoris</option>
+        <option value="Diskon Spesial">Diskon Spesial</option>
+    </select>
+
+    <!-- ===== KONTEN ===== -->
+    <div class="row">
+        <div class="side">
+            <h2>Kategori</h2>
+            <ul>
+                <li>Semua Produk</li>
+                <li>Baju Pria</li>
+                <li>Baju Wanita</li>
+                <li>Anak-anak</li>
+                <li>Aksesoris</li>
+                <li>Diskon Spesial</li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <h2>Produk Terbaru</h2>
+            <div class="produk">
+                <div class="card" data-category="Baju Pria" data-name="Kemeja Pria Klasik" data-price="Rp 149.000">
+                    <img src="image/kemeja.jpeg" alt="Baju 1">
+                    <h3>Kemeja Pria Klasik</h3>
+                    <p>Rp 149.000</p>
+                    <button class="btn buy-btn">Beli Sekarang</button>
+                </div>
+                <div class="card" data-category="Baju Wanita" data-name="Dress Wanita Elegan" data-price="Rp 179.000">
+                    <img src="image/dress.jpg" alt="Baju 2">
+                    <h3>Dress Wanita Elegan</h3>
+                    <p>Rp 179.000</p>
+                    <button class="btn buy-btn">Beli Sekarang</button>
+                </div>
+                <div class="card" data-category="Anak-anak" data-name="Kaos Anak Lucu" data-price="Rp 89.000">
+                    <img src="image/kaos_anak.jpg" alt="Baju 3">
+                    <h3>Kaos Anak Lucu</h3>
+                    <p>Rp 89.000</p>
+                    <button class="btn buy-btn">Beli Sekarang</button>
+                </div>
+            </div>
+            <div class="no-products" style="display:none;">Produk Tidak Tersedia</div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer" style="background-color: #333; color: #fff; padding: 20px 10px; text-align: center; font-family: Arial, sans-serif;">
+    <p style="margin: 5px 0;">&copy; 2025 <strong>FashionKu</strong> | Semua Hak Dilindungi</p>
+    <p style="margin: 5px 0; color: #aaa; font-size: 14px;">Powered by <a href="https://www.instagram.com/farojainurridlo_" style="color: #f39c12; text-decoration: none;">Faroj Ainurridlo</a></p>
+</div>
+
+    <script>
+        function filterCategory(value) {
+            const cards = document.querySelectorAll('.card');
+            let hasVisible = false;
+
+            cards.forEach(card => {
+                if (value === "" || value === "Semua Produk" || card.dataset.category === value) {
+                    card.style.display = "block";
+                    hasVisible = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            document.querySelector('.no-products').style.display = hasVisible ? "none" : "block";
+
+            // Highlight kategori sidebar
+            const sidebarCategories = document.querySelectorAll('.side ul li');
+            sidebarCategories.forEach(li => {
+                li.classList.toggle('active', li.textContent === value || (value === "" && li.textContent === "Semua Produk"));
+            });
+
+            // Sinkronisasi dropdown mobile
+            const mobileDropdown = document.querySelector('.mobile-category');
+            if (mobileDropdown) mobileDropdown.value = value || "";
+        }
+
+        // Klik sidebar kategori
+        const sidebarCategories = document.querySelectorAll('.side ul li');
+        sidebarCategories.forEach(li => {
+            li.addEventListener('click', () => {
+                const category = li.textContent;
+                filterCategory(category);
+            });
+        });
+
+        // Tampilkan semua produk saat load awal
+        filterCategory("Semua Produk");
+
+        // Klik tombol "Beli Sekarang"
+        document.addEventListener('DOMContentLoaded', () => {
+        const whatsappNumber = "+628986735615"; 
+        const buyButtons = document.querySelectorAll('.buy-btn');
+
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                if (!card) return;
+
+                // Ambil nama dan harga dari atribut data
+                const productName = card.getAttribute('data-name') || "Produk";
+                const productPrice = card.getAttribute('data-price') || "";
+
+                // Buat pesan untuk WhatsApp
+                const message = `Halo, saya ingin membeli produk: ${productName} ${productPrice}`;
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                // Buka WhatsApp di tab baru
+                window.open(url, '_blank');
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>

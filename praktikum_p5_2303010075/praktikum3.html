@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum Kolom Responsif</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .column{
+            float: left;
+            width: 25%;
+            padding: 20px;
+        }
+        .row:after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        @media screen and (max-width: 992px){
+            .column{
+                width: 50%;
+            }
+        }
+        @media screen and (max-width: 600px){
+            .column{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Responsive Tampilan 4 Kolom</h2>
+    <p>
+        <strong>Ubah ukuran layar untuk melihat perubahan yang terjadi.</strong> Pada lebar 992px atau kurang, kolm akan berubah menjadi 2 kolom. pada layar lebar 600px atau kurang, kolom akan vertikal ke bawah.
+    </p>
+
+    <div class="row">
+        <div>
+            <div class="column" style="background-color: #aaa;">
+                <h2>Kolom 1</h2>
+                <p>Ini adalah kolom pertama.</p>
+            </div>
+        </div>
+        <div>
+            <div class="column" style="background-color: #bbb;">
+                <h2>Kolom 2</h2>
+                <p>Ini adalah kolom kedua.</p>
+            </div>
+        </div>
+        <div>
+            <div class="column" style="background-color: #ccc;">
+                <h2>Kolom 3</h2>
+                <p>Ini adalah kolom ketiga.</p>
+            </div>
+        </div>
+        <div>
+            <div class="column" style="background-color: #ddd;">
+                <h2>Kolom 4</h2>
+                <p>Ini adalah kolom keempat.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
