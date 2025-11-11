@@ -55,17 +55,29 @@
         Tinggalkan pesan, saran, atau testimoni Anda untuk StyleEase
       </p>
 
-      <form id="guestForm">
-        <label for="guestName">Nama Lengkap *</label>
-        <input type="text" id="guestName" name="name" required placeholder="Masukkan nama Anda">
-
-        <label for="guestEmail">Email *</label>
-        <input type="email" id="guestEmail" name="email" required placeholder="Masukkan email Anda">
-
-        <label for="guestMessage">Pesan *</label>
-        <textarea id="guestMessage" name="message" required placeholder="Tulis pesan atau testimoni Anda di sini..."></textarea>
-
-        <button type="submit">Kirim Pesan</button>
+      <form id="guestbook-form" class="faroj_contact_form">
+        <div class="faroj_form_group">
+          <label for="guestName">Nama Lengkap *</label>
+          <input type="text" id="guestName" name="name" required placeholder="Masukkan nama lengkap Anda">
+        </div>
+        
+        <div class="faroj_form_group">
+          <label for="guestEmail">Email *</label>
+          <input type="email" id="guestEmail" name="email" required placeholder="Masukkan email aktif">
+        </div>
+        
+        <div class="faroj_form_group">
+          <label for="guestMessage">Testimoni *</label>
+          <textarea id="guestMessage" name="message" rows="5" required placeholder="Bagikan pengalaman berbelanja Anda di StyleEase..."></textarea>
+        </div>
+        
+        <button type="submit" class="faroj_btn">
+          <span class="btn-text">Kirim Testimoni</span>
+          <span class="btn-loading" style="display: none;">
+            <div class="spinner"></div>
+            Mengirim...
+          </span>
+        </button>
       </form>
 
       <div class="guest-list" id="guestList">
@@ -125,4 +137,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
