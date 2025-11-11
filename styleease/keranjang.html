@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StyleEase - Keranjang</title>
+  <link rel="icon" type="image/png" href="assets/logo-favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header id="faroj_header" class="faroj_header">
+    <div class="faroj_brand">
+      <div class="faroj_logo" aria-hidden="true">
+        <img src="assets/logo-favicon.png" alt="StyleEase" width="40" height="40">
+      </div>
+      <div class="faroj_brand_text">
+        <div class="faroj_title">StyleEase</div>
+        <div class="faroj_muted">Pakaian trendy & kualitas</div>
+      </div>
+    </div>
+
+    <nav class="faroj_menu" id="faroj_menu">
+      <button class="faroj_menu_toggle" id="faroj_menu_toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="faroj_menu_list" title="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <ul class="faroj_menu_list" id="faroj_menu_list" role="menu">
+        <li><a href="index.html" class="faroj_menu_link">Home</a></li>
+        <li><a href="toko.html" class="faroj_menu_link">Toko</a></li>
+        <li><a href="tentang.html" class="faroj_menu_link">Tentang</a></li>
+        <li><a href="blog.html" class="faroj_menu_link">Blog</a></li>
+        <li><a href="kontak.html" class="faroj_menu_link">Kontak</a></li>
+        <li><a href="bukutamu.html" class="faroj_menu_link">Testimoni</a></li>
+        <li><a href="faq.html" class="faroj_menu_link">FAQ</a></li>
+        <li><a href="keranjang.html" class="faroj_menu_link faroj_cart_link active" aria-label="Keranjang Belanja" title="Keranjang Belanja">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 20a1 1 0 100 2 1 1 0 000-2z"/>
+            <path d="M20 20a1 1 0 100 2 1 1 0 000-2z"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+          </svg>
+          <span id="faroj_cart_count">0</span>
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="faroj_main">
+    <section class="faroj_cart_header">
+      <h1>Keranjang Belanja</h1>
+    </section>
+
+    <section class="faroj_cart_section">
+      <div class="faroj_cart_container">
+        <div class="faroj_cart_items" id="faroj_cart_root">
+          <!-- Items keranjang akan di-render oleh JavaScript -->
+        </div>
+
+        <div class="faroj_checkout_box" id="faroj_checkout_box" style="display: none;">
+          <div class="faroj_checkout_header">
+            <h3>Ringkasan Belanja</h3>
+            <div class="faroj_secure_badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Aman & Terpercaya
+            </div>
+          </div>
+
+          <div class="faroj_checkout_summary">
+            <div class="faroj_summary_row">
+              <span>Total Item:</span>
+              <span id="faroj_total_items">0 item</span>
+            </div>
+            <div class="faroj_summary_row">
+              <span>Subtotal:</span>
+              <span id="faroj_subtotal">Rp 0</span>
+            </div>
+            <div class="faroj_summary_row">
+              <span>Ongkos Kirim:</span>
+              <span id="faroj_shipping">Rp 0</span>
+            </div>
+            <div class="faroj_summary_row faroj_summary_total">
+              <span>Total:</span>
+              <span id="faroj_total">Rp 0</span>
+            </div>
+          </div>
+
+          <div class="faroj_promo_section">
+            <input type="text" class="faroj_promo_input" placeholder="Kode promo" title="Masukkan kode promo">
+            <button class="faroj_promo_btn" title="Gunakan kode promo">Gunakan</button>
+          </div>
+
+          <button id="faroj_checkout_btn" class="faroj_checkout_btn" title="Lanjut ke pembayaran">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6H9l-7 7 7 7h11a2 2 0 002-2V8a2 2 0 00-2-2z"/>
+            </svg>
+            Lanjut ke Pembayaran
+          </button>
+
+          <div class="faroj_payment_methods">
+            <p>Metode Pembayaran:</p>
+            <div class="faroj_payment_icons">
+              <span>BCA</span>
+              <span>Mandiri</span>
+              <span>BRI</span>
+              <span>BNI</span>
+              <span>GoPay</span>
+              <span>OVO</span>
+              <span>DANA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Riwayat Pembelian -->
+    <section class="faroj_history_box">
+      <h2>Riwayat Pembelian</h2>
+      <div id="faroj_history_content">
+        <!-- Riwayat akan di-render oleh JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Biodata & Pembayaran -->
+  <div id="faroj_checkout_modal" class="faroj_modal" aria-hidden="true">
+    <div class="faroj_modal_inner">
+      <button class="faroj_modal_close" id="faroj_checkout_close" title="Tutup modal">✕</button>
+      
+      <div class="faroj_modal_header">
+        <h3>Data Pemesanan</h3>
+        <p class="faroj_modal_subtitle">Lengkapi data diri dan pilih metode pembayaran</p>
+      </div>
+
+      <form id="faroj_order_form" class="faroj_contact_form">
+        <div class="faroj_form_group">
+          <label for="customer_name">Nama Lengkap *</label>
+          <input type="text" id="customer_name" name="customer_name" required placeholder="Masukkan nama lengkap" title="Masukkan nama lengkap Anda">
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="customer_email">Email *</label>
+          <input type="email" id="customer_email" name="customer_email" required placeholder="Masukkan email aktif" title="Masukkan alamat email aktif">
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="customer_phone">Nomor WhatsApp *</label>
+          <input type="tel" id="customer_phone" name="customer_phone" required placeholder="Contoh: 081234567890" title="Masukkan nomor WhatsApp aktif">
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="customer_address">Alamat Lengkap *</label>
+          <textarea id="customer_address" name="customer_address" rows="3" required placeholder="Masukkan alamat lengkap pengiriman" title="Masukkan alamat lengkap untuk pengiriman"></textarea>
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="customer_city">Kota *</label>
+          <input type="text" id="customer_city" name="customer_city" required placeholder="Kota tempat tinggal" title="Masukkan kota tempat tinggal">
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="customer_postal">Kode Pos</label>
+          <input type="text" id="customer_postal" name="customer_postal" placeholder="Kode pos (opsional)" title="Masukkan kode pos (opsional)">
+        </div>
+
+        <div class="faroj_form_group">
+          <label for="order_notes">Catatan Pesanan</label>
+          <textarea id="order_notes" name="order_notes" rows="2" placeholder="Catatan khusus untuk pesanan (opsional)" title="Masukkan catatan khusus untuk pesanan"></textarea>
+        </div>
+
+        <div class="faroj_payment_options">
+          <h4 style="margin-bottom: 15px;">Metode Pembayaran *</h4>
+          
+          <label class="faroj_payment_option">
+            <input type="radio" name="payment_method" value="transfer" class="faroj_payment_radio" checked required>
+            <div class="faroj_payment_card">
+              <div class="faroj_payment_icon">🏦</div>
+              <div class="faroj_payment_details">
+                <h4>Transfer Bank</h4>
+                <p>BCA, Mandiri, BRI, BNI</p>
+              </div>
+              <div class="faroj_payment_check"></div>
+            </div>
+          </label>
+
+          <label class="faroj_payment_option">
+            <input type="radio" name="payment_method" value="cod" class="faroj_payment_radio" required>
+            <div class="faroj_payment_card">
+              <div class="faroj_payment_icon">💰</div>
+              <div class="faroj_payment_details">
+                <h4>Bayar di Tempat (COD)</h4>
+                <p>Bayar saat barang diterima</p>
+              </div>
+              <div class="faroj_payment_check"></div>
+            </div>
+          </label>
+
+          <label class="faroj_payment_option">
+            <input type="radio" name="payment_method" value="ewallet" class="faroj_payment_radio" required>
+            <div class="faroj_payment_card">
+              <div class="faroj_payment_icon">📱</div>
+              <div class="faroj_payment_details">
+                <h4>E-Wallet</h4>
+                <p>GoPay, OVO, DANA, LinkAja</p>
+              </div>
+              <div class="faroj_payment_check"></div>
+            </div>
+          </label>
+        </div>
+
+        <div id="faroj_payment_details" class="faroj_payment_details_section">
+          <!-- Detail pembayaran akan diisi oleh JavaScript -->
+        </div>
+
+        <div class="faroj_modal_footer">
+          <div class="faroj_total_amount">
+            <span>Total Pembayaran:</span>
+            <strong id="faroj_modal_total">Rp 0</strong>
+          </div>
+          <button type="submit" class="faroj_confirm_btn" id="faroj_confirm_payment" title="Konfirmasi dan lanjutkan pembayaran">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            Konfirmasi & Bayar Sekarang
+          </button>
+          <p style="text-align: center; font-size: 0.8em; color: var(--muted); margin-top: 10px;">
+            Dengan mengkonfirmasi, Anda menyetujui <a href="#" style="color: var(--accent);">Syarat & Ketentuan</a> kami
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Konfirmasi Sukses -->
+  <div id="faroj_success_modal" class="faroj_modal" aria-hidden="true">
+    <div class="faroj_modal_inner">
+      <div class="faroj_modal_header">
+        <div style="font-size: 4em; color: #22c55e; margin-bottom: 20px;">✅</div>
+        <h3>Pesanan Berhasil!</h3>
+        <p class="faroj_modal_subtitle">Terima kasih telah berbelanja di StyleEase</p>
+      </div>
+
+      <div style="text-align: center; padding: 20px;">
+        <p><strong>Konfirmasi pesanan telah dikirim ke email Anda</strong></p>
+        <p style="color: var(--muted); font-size: 0.9em;">
+          Detail pesanan dan instruksi pembayaran lengkap telah dikirim ke email yang Anda daftarkan.
+        </p>
+        
+        <div style="background: #f0fdf4; padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #22c55e;">
+          <p style="margin: 0; font-weight: 600;">No. Pesanan: <span id="success_order_id">#SE0001</span></p>
+          <p style="margin: 5px 0 0 0; color: var(--muted); font-size: 0.9em;">
+            Simpan nomor ini untuk tracking pesanan
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+          <button onclick="closeSuccessModal()" class="faroj_btn_outline" title="Tutup modal">Tutup</button>
+          <button onclick="printOrder()" class="faroj_btn" title="Cetak invoice pesanan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+              <path d="M6 14h12v8H6z"/>
+            </svg>
+            Cetak Invoice
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Konfirmasi Pembayaran - HANYA UPLOAD FOTO -->
+<div id="paymentProofModal" class="faroj_modal" aria-hidden="true">
+    <div class="faroj_modal_content" style="max-width: 450px;">
+        <button id="paymentProofClose" class="faroj_modal_close">&times;</button>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h3>Konfirmasi Pembayaran</h3>
+            <p style="color: var(--muted); font-size: 0.9em;">Upload bukti transfer untuk konfirmasi otomatis</p>
+        </div>
+        
+        <form id="paymentProofForm">
+            <input type="hidden" id="proof_order_id">
+            
+            <!-- HANYA UPLOAD BUKTI TRANSFER -->
+            <div class="faroj_form_group">
+                <label style="font-weight: bold; margin-bottom: 10px; display: block;">
+                    📷 Upload Bukti Transfer *
+                </label>
+                <div style="border: 2px dashed #3b82f6; padding: 30px; text-align: center; border-radius: 12px; margin: 10px 0; cursor: pointer; background: #f8fafc; transition: all 0.3s;" 
+                     id="uploadArea" onmouseover="this.style.background='#f0f9ff'" onmouseout="this.style.background='#f8fafc'">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p style="margin: 15px 0 0; color: #1e40af; font-weight: 500;">Klik untuk upload bukti transfer</p>
+                    <small style="color: var(--muted); display: block; margin-top: 8px;">
+                        Format: JPG, PNG, GIF (Maks. 2MB)
+                    </small>
+                    <input type="file" id="proof_image" accept="image/*" style="display: none;">
+                </div>
+                <div id="imagePreview" style="display: none; margin-top: 15px; text-align: center;">
+                    <img id="previewImg" style="max-width: 250px; max-height: 250px; border-radius: 8px; border: 2px solid #3b82f6; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <br>
+                    <button type="button" id="removeImage" style="margin-top: 12px; background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">
+                        ✕ Hapus Gambar
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Informasi Penting -->
+            <div style="background: #fffbeb; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <h4 style="margin: 0 0 10px; color: #d97706; font-size: 14px;">📋 Informasi Penting</h4>
+                <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #92400e;">
+                    <li>Pastikan bukti transfer jelas terbaca</li>
+                    <li>Foto harus menunjukkan nominal transfer</li>
+                    <li>Status akan otomatis berubah setelah upload</li>
+                </ul>
+            </div>
+            
+            <button type="submit" class="faroj_btn" style="width: 100%; padding: 14px; font-size: 16px; background: #10b981; border: none;">
+                <span class="btn-text">✅ Konfirmasi Pembayaran</span>
+                <span class="btn-loading" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                    </svg>
+                    Memproses...
+                </span>
+            </button>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                <small style="color: var(--muted);">
+                    Dengan mengkonfirmasi, Anda menyetujui bahwa bukti transfer valid
+                </small>
+            </div>
+        </form>
+    </div>
+</div>
+  
+  <div id="faroj_cart_notification" class="faroj_cart_notification" aria-hidden="true">
+    <div class="faroj_notification_content">
+      <div class="faroj_notification_icon"></div>
+      <div class="faroj_notification_text">
+        <div class="faroj_notification_title"></div>
+        <div class="faroj_notification_message"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="faroj_footer" class="faroj_footer">
+    <div class="faroj_footer_inner">
+      <div class="faroj_footer_col faroj_footer_brand">
+        <div class="faroj_logo" aria-hidden="true">
+          <img src="assets/logo.png" alt="StyleEase" width="200px" height="120px">
+        </div>
+        <div>
+          <strong>StyleEase</strong>
+          <div class="faroj_footer_tagline">Pakaian trendy & kualitas — Delivery cepat ke seluruh Indonesia.</div>
+        </div>
+      </div>
+      <div class="faroj_footer_col faroj_footer_links">
+        <h4>Menu</h4>
+        <nav>
+          <a href="toko.html">Toko</a>
+          <a href="faq.html">FAQ</a>
+          <a href="kontak.html">Kontak</a>
+          <a href="bukutamu.html">Buku Tamu</a>
+        </nav>
+      </div>
+      <div class="faroj_footer_col faroj_footer_contact">
+        <h4>Hubungi Kami</h4>
+        <div class="faroj_contact_line">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+628986735615">+62 898-6735-615</a>
+        </div>
+        <div class="faroj_contact_line">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:2303010075@unper.ac.id">2303010075@unper.ac.id</a>
+        </div>
+        <div class="faroj_social_links">
+          <a class="faroj_social_link" href="https://facebook.com/farojainurridlo.jhh" aria-label="Facebook" target="_blank" title="Facebook StyleEase">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="faroj_social_link" href="https://instagram.com/farojainurridlo_" aria-label="Instagram" target="_blank" title="Instagram StyleEase">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="faroj_social_link" href="https://wa.me/628986735615?text=Halo%20StyleEase,%20saya%20ingin%20bertanya%20tentang%20produk%20anda." aria-label="Whatsapp" target="_blank" title="WhatsApp StyleEase">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="faroj_credit">
+      © 2023-<span id="faroj_year">2024</span> StyleEase. All Rights Reserved<br>
+      <span class="faroj_powered">Powered by <a href="https://instagram.com/farojainurridlo_" target="_blank"> Faroj Ainurridlo</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Load EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Lightweight initializer — rely on centralized functions in script.js
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Keranjang page initializer');
+      if (typeof updateCartCountUI === 'function') updateCartCountUI();
+      if (typeof renderCartPage === 'function') renderCartPage();
+      if (typeof renderPurchaseHistory === 'function') renderPurchaseHistory();
+      if (typeof setupPaymentValidation === 'function') setupPaymentValidation();
+      if (typeof setupMenuToggle === 'function') setupMenuToggle();
+      if (typeof initFooterYear === 'function') initFooterYear();
+    });
+  </script>
+  <script type="text/javascript">
+    emailjs.init('5Xh2MikZli8y0-z12'); // Ganti dengan Public Key Anda
+</script>
+</body>
+</html>

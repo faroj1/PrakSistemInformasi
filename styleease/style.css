@@ -1,0 +1,3056 @@
+/* Style utama untuk StyleEase
+   Semua ID dan CLASS memakai pola faroj_...
+*/
+
+:root{
+  --accent:#ff6b6b;
+  --dark:#0f1724;
+  --muted:#6b7280;
+  --bg:#fbfbfd;
+  --card:#ffffff;
+  --radius:12px;
+  --shadow: 0 6px 18px rgba(15,23,36,0.06);
+  --maxw:1100px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+  color:var(--dark);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* ===============================
+   MENU AKTIF / HALAMAN SAAT INI
+   =============================== */
+.faroj_menu_link.active {
+  color: var(--accent);
+  font-weight: 600;
+  position: relative;
+}
+
+.faroj_menu_link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Header / Navbar */
+#faroj_header.faroj_header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+  max-width:var(--maxw);
+  margin:12px auto;
+  gap:12px;
+}
+.faroj_brand{display:flex;align-items:center;gap:16px}
+.faroj_logo{width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.faroj_logo img{width:100%;height:100%;object-fit:contain;display:block}
+.faroj_title{font-weight:700;font-size:18px}
+.faroj_muted{font-size:12px;color:var(--muted)}
+
+/* menu */
+.faroj_menu{position:relative}
+.faroj_menu_toggle{
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.faroj_menu_toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--dark);
+  transition: transform 0.3s;
+}
+
+.faroj_menu_toggle:hover {
+  background: #f2f4f7;
+}
+
+.faroj_menu_toggle[aria-expanded="true"] svg {
+  transform: rotate(90deg);
+}
+
+.faroj_menu_list{
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.faroj_menu_link{
+  color: var(--dark);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.faroj_menu_link:hover{
+  background: #f2f4f7;
+}
+
+@media (max-width: 900px) {
+  .faroj_header {
+    position: relative;
+    z-index: 100;
+  }
+
+  .faroj_menu {
+    position: static;
+  }
+
+  .faroj_menu_toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 101;
+  }
+
+  .faroj_menu_list {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: calc(100% - 10px);
+    background: var(--card);
+    flex-direction: column;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    border: 1px solid #eee;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 100;
+  }
+
+  .faroj_menu_list.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .faroj_menu_list li {
+    width: 100%;
+  }
+
+  .faroj_menu_link {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    width: 100%;
+  }
+
+  .faroj_menu_link:hover {
+    background: #f8f9fa;
+  }
+
+  .faroj_cart_link {
+    justify-content: flex-start;
+  }
+}
+
+/* Cart Icon Styles */
+.faroj_cart_link {
+  position: relative;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faroj_cart_link svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+#faroj_cart_count,
+[id^="faroj_cart_count_"] {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: var(--accent);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+.faroj_cart_link:hover #faroj_cart_count,
+.faroj_cart_link:hover [id^="faroj_cart_count_"] {
+  transform: scale(1.1);
+}
+
+/* Hero */
+.faroj_main{max-width:var(--maxw);margin:8px auto;padding:8px}
+.faroj_hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  align-items: center;
+  margin-top: 12px;
+  background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(255,255,255,0));
+  padding: 40px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.faroj_hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,107,107,0.05) 0%, rgba(255,255,255,0) 100%);
+  z-index: 0;
+}
+
+.faroj_hero_text {
+  position: relative;
+  z-index: 1;
+}
+
+.faroj_hero_text h1 {
+  margin: 0 0 16px 0;
+  font-size: 42px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--dark) 0%, #2a3444 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.faroj_lead {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.faroj_btn_hero {
+  padding: 16px 32px;
+  font-size: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+  transition: all 0.3s ease;
+}
+
+.faroj_btn_hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,107,107,0.4);
+}
+
+.faroj_hero_image {
+  position: relative;
+}
+
+.faroj_hero_image img {
+  width: 100%;
+  height: 360px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.faroj_hero_image:hover img {
+  transform: scale(1.02);
+}
+
+.faroj_hero_badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+  animation: pulse 2s infinite;
+}
+
+.faroj_hero_badge_text {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.faroj_hero_badge_sub {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.faroj_hero_stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.faroj_hero_stat {
+  text-align: center;
+}
+
+.faroj_hero_stat_number {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.faroj_hero_stat_label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Featured Section Styles */
+.faroj_section {
+  max-width: var(--maxw);
+  margin: 60px auto;
+  padding: 8px;
+}
+
+.faroj_featured_section {
+  text-align: center;
+  position: relative;
+}
+
+.faroj_featured_section h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--dark) 0%, #2a3444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faroj_section_subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.faroj_featured_products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.faroj_featured_products .faroj_product {
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.faroj_featured_products .faroj_product:hover {
+  transform: translateY(-10px);
+}
+
+.faroj_featured_products .faroj_product img {
+  height: 320px;
+  transition: all 0.5s ease;
+}
+
+.faroj_featured_products .faroj_product:hover img {
+  transform: scale(1.05);
+}
+
+/* Shop Styles */
+.faroj_shop_header {
+  margin-bottom: 40px;
+}
+
+.faroj_shop_intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.faroj_shop_tagline {
+  color: var(--muted);
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+.faroj_shop_filters {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.faroj_filter_group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faroj_select {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: white;
+  color: var(--dark);
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.faroj_select:hover {
+  border-color: var(--accent);
+}
+
+.faroj_shop_categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.faroj_category_btn {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: white;
+  color: var(--dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faroj_category_btn:hover,
+.faroj_category_btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Products grid */
+.faroj_products_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.faroj_product {
+  background: var(--card);
+  padding: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faroj_product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(15,23,36,0.12);
+}
+
+.faroj_product img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.faroj_product_content {
+  padding: 16px;
+}
+
+.faroj_product h4 {
+  margin: 0 0 8px;
+  font-size: 1.1em;
+}
+
+.faroj_product_category {
+  color: var(--accent);
+  font-size: 0.85em;
+  margin-bottom: 4px;
+}
+
+.faroj_product_price {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1.1em;
+  margin: 8px 0;
+}
+
+.faroj_product_actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.faroj_btn_add {
+  flex: 1;
+  padding: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.faroj_btn_add:hover {
+  opacity: 0.9;
+}
+
+.faroj_btn_detail {
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.faroj_btn_detail:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.faroj_product_variants {
+  margin: 12px 0;
+  display: flex;
+  gap: 12px;
+}
+
+.faroj_product_colors {
+  display: flex;
+  gap: 4px;
+}
+
+.faroj_color_dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px #e2e8f0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.faroj_color_dot:hover {
+  transform: scale(1.2);
+}
+
+.faroj_product_sizes {
+  display: flex;
+  gap: 4px;
+}
+
+.faroj_size_badge {
+  font-size: 0.75em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: var(--dark);
+}
+
+.faroj_btn_add svg,
+.faroj_btn_detail svg {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.faroj_btn_detail svg {
+  margin: 0;
+}
+.faroj_btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;text-decoration:none; transition: all 0.3s ease;}
+.faroj_btn:hover {
+  background-color: #ff4a4a; 
+  transform: translateY(-3px); 
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3); 
+}
+
+.faroj_link{color:var(--accent);text-decoration:none}
+
+/* Cards & features */
+.faroj_features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+.faroj_card{background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+
+/* Footer */
+.faroj_footer{
+  /* dark footer: high contrast with light text */
+  background: #0f1724; /* deep charcoal */
+  color: #cbd5e1; /* light-muted text */
+  max-width:var(--maxw);
+  margin:24px auto 40px;
+  padding:28px 20px;
+  border-top:1px solid rgba(255,255,255,0.04);
+  border-radius:12px;
+  box-shadow: 0 -8px 40px rgba(2,6,23,0.5);
+}
+
+.faroj_footer .faroj_footer_inner{
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+
+.faroj_footer_col{
+  flex:1;
+  min-width:180px;
+}
+
+.faroj_footer_brand .faroj_logo{width:120px;height:120px;margin-bottom:12px;transition:transform 0.2s ease}
+
+.faroj_footer_brand .faroj_logo:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 420px) {
+  .faroj_logo{width:48px;height:48px}
+  .faroj_footer_brand .faroj_logo{width:90px;height:90px}
+}
+.faroj_footer_brand strong{display:block;font-size:18px;color:#f8fafc}
+.faroj_footer_brand .faroj_footer_tagline{font-size:13px;color:#94a3b8;margin-top:6px}
+
+.faroj_footer_links nav{display:flex;flex-direction:column;gap:8px}
+.faroj_footer_links a{color:#cbd5e1;text-decoration:none}
+.faroj_footer_links a:hover{text-decoration:underline;color:var(--accent)}
+
+.faroj_footer_contact .faroj_contact_line{font-size:14px;margin-bottom:6px;color:#cbd5e1}
+.faroj_footer_contact a{color:#cbd5e1;text-decoration:none}
+.faroj_social_links{display:flex;gap:8px;margin-top:8px}
+.faroj_social_link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.04);color:#e2e8f0;text-decoration:none}
+.faroj_social_link:hover{background:var(--accent);color:white}
+
+.faroj_credit{
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 720px){
+  .faroj_footer .faroj_footer_inner{flex-direction:column;gap:16px}
+  .faroj_footer{padding:20px}
+  .faroj_footer_links nav{flex-direction:row;flex-wrap:wrap;gap:10px}
+}
+
+/* Modal */
+.faroj_modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12,17,23,0.65);
+  padding: 20px;
+  z-index: 40;
+  backdrop-filter: blur(4px);
+}
+
+.faroj_modal[aria-hidden="false"] {
+  display: flex;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.faroj_modal_inner {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: modalSlideUp 0.3s ease forwards;
+}
+
+.faroj_modal_close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  border: 0;
+  background: #f3f4f6;
+  color: var(--dark);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.faroj_modal_close:hover {
+  background: #e5e7eb;
+  transform: scale(1.1);
+}
+
+.faroj_modal_header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.faroj_modal_header h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--dark);
+}
+
+.faroj_modal_subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.faroj_payment_options {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.faroj_payment_option {
+  cursor: pointer;
+}
+
+.faroj_payment_radio {
+  display: none;
+}
+
+.faroj_payment_card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.faroj_payment_radio:checked + .faroj_payment_card {
+  border-color: var(--accent);
+  background: rgba(255,107,107,0.04);
+}
+
+.faroj_payment_icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faroj_payment_details {
+  text-align: left;
+}
+
+.faroj_payment_details h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.faroj_payment_details p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.faroj_payment_check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.faroj_payment_radio:checked + .faroj_payment_card .faroj_payment_check {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.faroj_payment_radio:checked + .faroj_payment_card .faroj_payment_check::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+}
+
+.faroj_payment_details_section {
+  margin: 24px 0;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.faroj_modal_footer {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.faroj_total_amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.faroj_total_amount span {
+  color: var(--muted);
+}
+
+.faroj_total_amount strong {
+  font-size: 20px;
+  color: var(--dark);
+}
+
+.faroj_confirm_btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.faroj_confirm_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,107,107,0.2);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .faroj_modal_inner {
+    padding: 20px;
+  }
+  
+  .faroj_payment_card {
+    padding: 12px;
+  }
+  
+  .faroj_payment_icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .faroj_payment_details h4 {
+    font-size: 15px;
+  }
+  
+  .faroj_payment_details p {
+    font-size: 13px;
+  }
+}
+
+/* Quantity Control Styles */
+.faroj_qty_control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faroj_qty_wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faroj_qty_btn {
+  border: none;
+  background: #f8f9fa;
+  color: var(--dark);
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.faroj_qty_btn:hover {
+  background: #e9ecef;
+}
+
+#faroj_modal_qty {
+  width: 50px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  padding: 8px 0;
+  background: white;
+  border-left: 1px solid #e6e9ef;
+  border-right: 1px solid #e6e9ef;
+}
+
+/* Blog Styles */
+.faroj_blog_header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faroj_blog_subtitle {
+  color: var(--muted);
+  font-size: 1.1em;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.faroj_blog_featured {
+  margin-bottom: 40px;
+}
+
+.faroj_blog_featured_card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.faroj_blog_featured_card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.faroj_blog_featured_content {
+  padding: 24px;
+}
+
+.faroj_blog_featured_content h2 {
+  margin: 10px 0;
+  font-size: 1.8em;
+}
+
+.faroj_blog_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.faroj_blog_card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.faroj_blog_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(15,23,36,0.12);
+}
+
+.faroj_blog_card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.faroj_blog_content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.faroj_blog_meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.faroj_blog_category {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.faroj_blog_card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.faroj_blog_card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.faroj_btn_outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.faroj_btn_outline:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.faroj_blog_pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.faroj_pagination_numbers {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.faroj_pagination_current {
+  background: var(--accent);
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.faroj_pagination_link {
+  color: var(--dark);
+  text-decoration: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.faroj_pagination_link:hover {
+  background: #f3f4f6;
+}
+
+.faroj_pagination_dots {
+  color: var(--muted);
+}
+
+.faroj_pagination_btn {
+  font-size: 0.9em;
+}
+
+/* Blog Post Styles */
+.faroj_blog_post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.faroj_blog_post_header {
+  margin-bottom: 40px;
+}
+
+.faroj_blog_post_image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 20px 0;
+}
+
+.faroj_blog_post_content {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--dark);
+}
+
+.faroj_blog_post_intro {
+  font-size: 1.2em;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.faroj_blog_post h2 {
+  margin: 40px 0 20px;
+  font-size: 1.8em;
+}
+
+.faroj_blog_post h3 {
+  margin: 30px 0 15px;
+  font-size: 1.4em;
+}
+
+.faroj_blog_post ul,
+.faroj_blog_post ol {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.faroj_blog_post li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.faroj_blog_post_shop {
+  background: var(--bg);
+  padding: 30px;
+  border-radius: var(--radius);
+  margin: 40px 0;
+}
+
+.faroj_blog_products_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.faroj_product_card {
+  background: var(--card);
+  padding: 15px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.faroj_product_card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+
+.faroj_blog_post_nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  gap: 20px;
+}
+
+.faroj_blog_post_share {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.faroj_share_buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.faroj_share_btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.faroj_share_facebook {
+  background: #1877f2;
+}
+
+.faroj_share_twitter {
+  background: #1da1f2;
+}
+
+.faroj_share_whatsapp {
+  background: #25d366;
+}
+
+.faroj_share_btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .faroj_blog_featured_card img {
+    height: 250px;
+  }
+  
+  .faroj_blog_grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faroj_blog_pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .faroj_blog_post {
+    padding: 15px;
+  }
+  
+  .faroj_blog_post_nav {
+    flex-direction: column;
+  }
+  
+  .faroj_share_buttons {
+    flex-direction: column;
+  }
+}
+
+/* testimonials */
+.faroj_testimonial blockquote {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+/* forms */
+.faroj_form label{display:block;margin-bottom:10px}
+.faroj_form input,.faroj_form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+
+/* cart */
+.faroj_cart_root{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+.faroj_cart_row{display:flex;gap:10px;align-items:center;padding:8px;border-bottom:1px solid #f3f4f6}
+.faroj_cart_row img{width:80px;height:80px;object-fit:cover;border-radius:8px}
+.faroj_checkout_box{background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:10px;box-shadow:var(--shadow);max-width:420px}
+
+/* FAQ Styles */
+.faroj_faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faroj_faq h2 {
+  margin: 40px 0 20px;
+  color: var(--dark);
+  font-size: 1.5em;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.faroj_faq h2:first-child {
+  margin-top: 0;
+}
+
+.faroj_faq details {
+  background: var(--card);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.faroj_faq details:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15,23,36,0.08);
+}
+
+.faroj_faq summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  position: relative;
+  padding-right: 40px;
+}
+
+.faroj_faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faroj_faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.faroj_faq details[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faroj_faq_content {
+  padding: 0 20px 20px;
+  color: var(--muted);
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.faroj_faq_content ul,
+.faroj_faq_content ol {
+  padding-left: 20px;
+  margin: 12px 0;
+}
+
+.faroj_faq_content li {
+  margin-bottom: 8px;
+}
+
+.faroj_faq_content p {
+  margin: 12px 0;
+}
+
+.faroj_faq_content strong {
+  color: var(--dark);
+}
+
+/* About Page Styles */
+.faroj_about_header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.faroj_about_tagline {
+  font-size: 1.2em;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.faroj_about_story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.faroj_about_image img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.faroj_about_content h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.faroj_about_content p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.faroj_values_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 40px 0 60px;
+}
+
+.faroj_value_card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.faroj_value_card:hover {
+  transform: translateY(-5px);
+}
+
+.faroj_value_icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.faroj_value_card h3 {
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.faroj_value_card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.faroj_achievements_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 40px 0 60px;
+}
+
+.faroj_achievement_card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.faroj_achievement_number {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.faroj_achievement_card p {
+  color: var(--muted);
+}
+
+.faroj_team_intro {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.faroj_team_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.faroj_team_member {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.faroj_team_member img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.faroj_team_info {
+  padding: 20px;
+}
+
+.faroj_team_role {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.faroj_team_desc {
+  color: var(--muted);
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.faroj_commitment_content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.faroj_commitment_list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.faroj_commitment_list li {
+  padding: 10px 0;
+  padding-left: 30px;
+  position: relative;
+  color: var(--muted);
+}
+
+.faroj_commitment_list li::before {
+  content: "✓";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.faroj_commitment_image img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Contact Page Styles */
+.faroj_contact_hero {
+  background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(255,255,255,0) 100%);
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faroj_contact_hero h1 {
+  font-size: 42px;
+  margin: 0 0 20px;
+  background: linear-gradient(135deg, var(--dark) 0%, #2a3444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faroj_contact_lead {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faroj_contact_section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faroj_contact_grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.faroj_contact_info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.faroj_contact_card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.faroj_contact_card:hover {
+  transform: translateY(-5px);
+}
+
+.faroj_contact_icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.faroj_contact_card h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.faroj_contact_card p {
+  margin: 0 0 8px;
+  color: var(--dark);
+}
+
+.faroj_contact_card small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.faroj_social_links {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.faroj_social_link {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.faroj_social_link:hover {
+  color: var(--accent);
+}
+
+.faroj_contact_form_wrapper {
+  position: relative;
+}
+
+.faroj_contact_form_card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.faroj_contact_form_card h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.faroj_contact_form_card > p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.faroj_contact_form {
+  display: grid;
+  gap: 20px;
+}
+
+.faroj_form_group {
+  display: grid;
+  gap: 8px;
+}
+
+.faroj_form_group label {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.faroj_form_group input,
+.faroj_form_group select,
+.faroj_form_group textarea {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.faroj_form_group input:focus,
+.faroj_form_group select:focus,
+.faroj_form_group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.faroj_submit_btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.faroj_submit_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,107,107,0.2);
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.faroj_form_success {
+  background: #dcfce7;
+  color: #166534;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.faroj_notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--dark);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.faroj_notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.faroj_map_section {
+  margin-bottom: 60px;
+}
+
+.faroj_map_container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faroj_map_container iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 1024px) {
+  .faroj_contact_grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faroj_contact_info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .faroj_contact_info {
+    grid-template-columns: 1fr;
+  }
+  
+  .faroj_contact_hero h1 {
+    font-size: 32px;
+  }
+  
+  .faroj_contact_lead {
+    font-size: 16px;
+  }
+  
+  .faroj_contact_form_card {
+    padding: 24px;
+  }
+}
+
+/* responsive */
+@media (max-width:900px){
+  .faroj_hero{grid-template-columns:1fr; padding:12px}
+  .faroj_menu_list{display:none;position:absolute;right:10px;top:62px;background:var(--card);flex-direction:column;padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+  .faroj_menu_toggle{display:block}
+  .faroj_menu_list.open{display:flex}
+  .faroj_hero_image img{height:200px}
+  .faroj_blog_card{grid-template-columns:1fr;gap:8px}
+}
+
+/* small */
+@media (max-width:420px){
+  .faroj_hero_text h1{font-size:20px}
+  .faroj_hero_image img{height:160px}
+  
+  .faroj_about_story,
+  .faroj_commitment_content {
+    grid-template-columns: 1fr;
+  }
+  
+  .faroj_about_image {
+    order: -1;
+  }
+  
+  .faroj_value_card,
+  .faroj_achievement_card {
+    padding: 20px;
+  }
+  
+  .faroj_team_member img {
+    height: 200px;
+  }
+  
+  .faroj_about_header h1 {
+    font-size: 1.8em;
+  }
+  
+  .faroj_about_tagline {
+    font-size: 1em;
+  }
+}
+#faroj_tabelRiwayat {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#faroj_tabelRiwayat th, #faroj_tabelRiwayat td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#faroj_tabelRiwayat th {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+#faroj_tabelRiwayat tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* ===============================
+   STYLE KHUSUS HALAMAN BUKU TAMU
+   =============================== */
+.faroj_bukutamu {
+  max-width: 600px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.faroj_bukutamu h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.faroj_bukutamu form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faroj_bukutamu label {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.faroj_bukutamu input,
+.faroj_bukutamu textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.faroj_bukutamu textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.faroj_bukutamu button {
+  background: var(--accent);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+.faroj_bukutamu button:hover {
+  background: #ff8585;
+}
+/* ===============================
+   GAYA UNTUK PESAN BUKU TAMU
+   =============================== */
+.guest-list {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 2px solid #eee;
+}
+
+.guest-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc; /* garis pemisah antar pesan */
+}
+
+.guest-item:last-child {
+  border-bottom: none; /* hilangkan garis terakhir */
+}
+
+.guest-item h4 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.1em;
+}
+
+.guest-item p {
+  margin: 5px 0 0;
+  color: #444;
+  font-size: 14px;
+}
+/* ===============================
+   GAYA UNTUK PESAN BUKU TAMU + ANIMASI
+   =============================== */
+.guest-list {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 2px solid #eee;
+}
+
+.guest-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+  opacity: 0; /* awal animasi */
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.guest-item:last-child {
+  border-bottom: none;
+}
+
+.guest-item h4 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.1em;
+}
+
+.guest-item p {
+  margin: 5px 0 0;
+  color: #444;
+  font-size: 14px;
+}
+
+/* ✨ Animasi Fade + Slide Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   Kartu Pesan Buku Tamu (Tampilan Modern)
+   =============================== */
+.guest-item {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  margin: 15px 0;
+  padding: 20px 50px 15px 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s ease forwards;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guest-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guest-item h4 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guest-item h4::before {
+  content: "👤";
+  font-size: 1.2em;
+}
+
+.guest-item p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.guest-item small {
+  display: block;
+  color: #777;
+  font-size: 13px;
+}
+
+.guest-item button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.guest-item button:hover {
+  background: #e34a4a;
+  transform: scale(1.05);
+}
+
+/* ===============================
+   BAGIAN TESTIMONI DARI BUKU TAMU
+   =============================== */
+.faroj_testimoni {
+  padding: 40px 20px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.faroj_testimoni h2 {
+  color: var(--dark);
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.testimoni-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.testimoni-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  text-align: left;
+  animation: fadeInUp 0.6s ease;
+}
+
+.testimoni-card h4 {
+  color: var(--accent);
+  margin: 0 0 5px;
+  font-size: 1.1em;
+}
+
+.testimoni-card p {
+  color: #333;
+  margin: 5px 0 10px;
+  font-size: 14px;
+}
+
+.testimoni-card small {
+  color: #777;
+  font-size: 13px;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .testimoni-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* New Cart Styles */
+.faroj_cart_header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(255,255,255,0) 100%);
+  margin-bottom: 30px;
+}
+
+.faroj_cart_header h1 {
+  font-size: 32px;
+  margin: 0;
+  background: linear-gradient(135deg, var(--dark) 0%, #2a3444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faroj_cart_section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faroj_cart_container {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 30px;
+  align-items: start;
+}
+
+.faroj_cart_items {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.faroj_cart_item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: center;
+}
+
+.faroj_cart_item:last-child {
+  border-bottom: none;
+}
+
+.faroj_cart_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.faroj_cart_info {
+  display: grid;
+  gap: 8px;
+}
+
+.faroj_cart_title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.faroj_cart_variant {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.faroj_cart_price {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.faroj_cart_actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.faroj_quantity_control {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faroj_quantity_btn {
+  border: none;
+  background: #f8f9fa;
+  color: var(--dark);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.faroj_quantity_btn:hover {
+  background: #e9ecef;
+}
+
+.faroj_quantity_input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.faroj_remove_btn {
+  border: none;
+  background: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.faroj_remove_btn:hover {
+  background: #fee2e2;
+}
+
+.faroj_checkout_box {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  position: sticky;
+  top: 20px;
+}
+
+.faroj_checkout_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.faroj_checkout_header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.faroj_secure_badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #059669;
+}
+
+.faroj_checkout_summary {
+  border-radius: 8px;
+  background: #f8f9fa;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.faroj_summary_row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.faroj_summary_row:last-child {
+  margin-bottom: 0;
+}
+
+.faroj_summary_total {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 16px;
+}
+
+.faroj_promo_section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.faroj_promo_input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.faroj_promo_btn {
+  padding: 0 16px;
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.faroj_promo_btn:hover {
+  opacity: 0.9;
+}
+
+.faroj_checkout_btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.faroj_checkout_btn:hover {
+  transform: translateY(-2px);
+}
+
+.faroj_payment_methods {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.faroj_payment_methods p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.faroj_payment_icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.faroj_payment_icons span {
+  font-size: 12px;
+  padding: 6px 12px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  color: var(--muted);
+}
+
+.faroj_cart_empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+
+.faroj_cart_empty svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+.faroj_cart_empty h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--dark);
+}
+
+.faroj_cart_empty p {
+  margin: 0 0 20px;
+}
+
+.faroj_cart_notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.faroj_cart_notification[aria-hidden="false"] {
+  transform: translateX(0);
+}
+
+.faroj_notification_content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faroj_notification_icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.faroj_notification_text {
+  flex: 1;
+}
+
+.faroj_notification_title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.faroj_notification_message {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  .faroj_cart_container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .faroj_cart_item {
+    grid-template-columns: 1fr;
+  }
+  
+  .faroj_cart_image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .faroj_cart_actions {
+    justify-content: space-between;
+  }
+  
+  .faroj_cart_steps {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .faroj_step_separator {
+    display: none;
+  }
+}
+
+/* ===============================
+   KERANJANG & RIWAYAT PEMBELIAN
+   =============================== */
+.cart-section {
+  padding: 40px 20px;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.4s ease;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-item-info h4 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 1em;
+}
+
+.cart-item-info p {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+
+.cart-summary {
+  font-weight: bold;
+  color: var(--dark);
+  text-align: right;
+  font-size: 1.1em;
+}
+
+.history-section {
+  background: #fafafa;
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 2px solid #eee;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.history-item {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  padding: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  animation: fadeInUp 0.5s ease;
+}
+
+.history-item h4 {
+  margin: 0 0 5px;
+  color: var(--accent);
+}
+
+.history-item small {
+  color: #777;
+}
+/* === Keranjang & Riwayat === */
+.cart-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  animation: fadeIn 0.4s ease;
+}
+.cart-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+.cart-info h4 { margin: 0 0 6px; }
+
+.faroj_checkout_box {
+  background: #fff6f6;
+  border: 1px solid #ffbebe;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+/* Purchase History */
+.faroj_history_box {
+  margin-top: 40px;
+  background: var(--bg);
+  padding: 20px;
+  border-radius: var(--radius);
+}
+
+.faroj_history_box h2 {
+  margin: 0 0 20px;
+  color: var(--dark);
+}
+
+.faroj_history_item {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.6s ease;
+}
+
+.faroj_history_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.faroj_history_actions {
+  display: flex;
+  gap: 8px;
+}
+
+.faroj_status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.faroj_status_menunggu-konfirmasi {
+  background: #fff3dc;
+  color: #b25e09;
+}
+
+.faroj_status_selesai {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.faroj_status_pengembalian {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.faroj_history_items {
+  margin: 15px 0;
+}
+
+.faroj_history_item_row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: center;
+}
+
+.faroj_history_item_row:last-child {
+  border-bottom: none;
+}
+
+.faroj_history_item_name {
+  font-weight: 500;
+}
+
+.faroj_history_item_qty {
+  color: var(--muted);
+  text-align: center;
+}
+
+.faroj_history_item_price,
+.faroj_history_item_subtotal {
+  text-align: right;
+}
+
+.faroj_history_summary {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f3f4f6;
+  text-align: right;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.faroj_btn_small {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.faroj_btn_small:hover {
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.faroj_powered a {
+  color: inherit; /* mengikuti warna teks normal */
+  text-decoration: none; /* hilangkan garis bawah */
+  transition: color 0.3s ease; /* efek halus saat hover */
+}
+
+.faroj_powered a:hover {
+  color: #b25e09; /* ubah warna saat hover */
+}
+
+.faroj_social_links {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.faroj_social_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #111;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.faroj_social_link:hover {
+  transform: translateY(-4px);
+  background-color: #fff3e0;
+  color: #ff6b00; /* warna oranye saat hover */
+}
+/* Gaya untuk bagian kontak footer */
+.faroj_footer_contact {
+  color: #f3f4f6;
+}
+
+.faroj_footer_contact h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+/* Baris kontak (telepon & email) */
+.faroj_contact_line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.faroj_contact_line i {
+  color: #ff6b00;
+  font-size: 16px;
+}
+
+.faroj_contact_line a {
+  color: #f3f4f6;
+  text-decoration: none;
+}
+
+.faroj_contact_line a:hover {
+  color: #ff6b00;
+}
+
+/* Ikon sosial media */
+.faroj_social_links {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.faroj_social_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #111;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.faroj_social_link:hover {
+  background-color: #fff3e0;
+  color: #ff6b00;
+  transform: translateY(-3px);
+}
+
+
+/* ===============================
+   STYLE UNTUK FORM PEMESANAN
+   =============================== */
+.faroj_ewallet_btn {
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.faroj_ewallet_btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.faroj_ewallet_btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Style untuk form pemesanan */
+#faroj_order_form {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#faroj_order_form .faroj_form_group {
+  margin-bottom: 15px;
+}
+
+#faroj_order_form label {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 5px;
+  display: block;
+}
+
+#faroj_order_form input,
+#faroj_order_form textarea,
+#faroj_order_form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+#faroj_order_form input:focus,
+#faroj_order_form textarea:focus,
+#faroj_order_form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+/* Style untuk modal sukses */
+#faroj_success_modal .faroj_modal_inner {
+  text-align: center;
+  max-width: 500px;
+}
+
+/* Responsive design untuk form */
+@media (max-width: 768px) {
+  #faroj_order_form {
+    max-height: 60vh;
+  }
+  
+  .faroj_ewallet_btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+/* ===============================
+   STYLE UNTUK VALIDASI FORM
+   =============================== */
+.faroj_form_group input:invalid,
+.faroj_form_group textarea:invalid,
+.faroj_form_group select:invalid {
+    border-color: #fecaca;
+}
+
+.faroj_form_group input:valid,
+.faroj_form_group textarea:valid,
+.faroj_form_group select:valid {
+    border-color: #bbf7d0;
+}
+
+.error-field {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+}
+
+.success-message {
+    color: #16a34a;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Style untuk radio button yang dipilih */
+.faroj_payment_radio:checked + .faroj_payment_card {
+    border-color: var(--accent);
+    background: rgba(255, 107, 107, 0.04);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Loading state untuk submit button */
+.faroj_confirm_btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.faroj_confirm_btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+/* Tambahkan di CSS */
+.faroj_status_badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.faroj_status_success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.faroj_status_cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.faroj_payment_proof_info {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 4px solid #3b82f6;
+}
+
+.faroj_payment_proof_info div {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+/* Style untuk modal upload bukti transfer */
+#uploadArea {
+    transition: all 0.3s ease;
+}
+
+#uploadArea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2);
+}
+
+.faroj_payment_proof_info {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid #3b82f6;
+}
+
+/* Tombol konfirmasi */
+.faroj_btn_small.confirm-payment-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.faroj_btn_small.confirm-payment-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}

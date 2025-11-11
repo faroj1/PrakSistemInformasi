@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StyleEase - Kontak</title>
+  <link rel="icon" type="image/png" href="assets/logo-favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header id="faroj_header" class="faroj_header">
+    <div class="faroj_brand">
+      <div class="faroj_logo" aria-hidden="true">
+        <img src="assets/logo-favicon.png" alt="StyleEase" width="40" height="40">
+      </div>
+      <div class="faroj_brand_text">
+        <div class="faroj_title">StyleEase</div>
+        <div class="faroj_muted">Pakaian trendy & kualitas</div>
+      </div>
+    </div>
+
+    <nav class="faroj_menu" id="faroj_menu">
+      <button class="faroj_menu_toggle" id="faroj_menu_toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="faroj_menu_list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <ul class="faroj_menu_list" id="faroj_menu_list" role="menu">
+        <li><a href="index.html" class="faroj_menu_link">Home</a></li>
+        <li><a href="toko.html" class="faroj_menu_link">Toko</a></li>
+        <li><a href="tentang.html" class="faroj_menu_link">Tentang</a></li>
+        <li><a href="blog.html" class="faroj_menu_link">Blog</a></li>
+        <li><a href="kontak.html" class="faroj_menu_link active">Kontak</a></li>
+        <li><a href="bukutamu.html" class="faroj_menu_link">Testimoni</a></li>
+        <li><a href="faq.html" class="faroj_menu_link">FAQ</a></li>
+        <li><a href="keranjang.html" class="faroj_menu_link faroj_cart_link" aria-label="Keranjang Belanja">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 20a1 1 0 100 2 1 1 0 000-2z"/>
+            <path d="M20 20a1 1 0 100 2 1 1 0 000-2z"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+          </svg>
+          <span id="faroj_cart_count_kontak">0</span>
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="faroj_main">
+    <section class="faroj_contact_hero">
+      <h1>Hubungi Kami</h1>
+      <p class="faroj_contact_lead">Kami siap membantu Anda 24/7. Jangan ragu untuk menghubungi kami untuk pertanyaan, saran, atau bantuan.</p>
+    </section>
+
+    <section class="faroj_contact_section">
+      <div class="faroj_contact_grid">
+        <div class="faroj_contact_info">
+          <div class="faroj_contact_card">
+            <div class="faroj_contact_icon">📞</div>
+            <h3>Telepon & WhatsApp</h3>
+            <p>+62 898-6735-615</p>
+            <small>Senin - Minggu, 08:00 - 22:00 WIB</small>
+          </div>
+          
+          <div class="faroj_contact_card">
+            <div class="faroj_contact_icon">✉️</div>
+            <h3>Email</h3>
+            <p>2303010075@unper.ac.id</p>
+            <small>Respon dalam 1-2 jam kerja</small>
+          </div>
+          
+          <div class="faroj_contact_card">
+            <div class="faroj_contact_icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>+62 898-6735-615</p>
+            <small>Chat langsung dengan CS kami</small>
+          </div>
+          
+          <div class="faroj_contact_card">
+            <div class="faroj_contact_icon">📍</div>
+            <h3>Alamat</h3>
+              <small>Jalan HZ, Kelurahan Lengkong, Kecamatan Tawang, Kota Tasikmalaya, Jawa Barat</small>
+          </div>
+        </div>
+
+        <div class="faroj_contact_form_wrapper">
+          <div class="faroj_contact_form_card">
+            <h2>Kirim Pesan</h2>
+            <p>Isi form di bawah ini dan kami akan segera merespons pesan Anda.</p>
+            
+            <form id="contactForm" class="faroj_contact_form" action="https://formspree.io/f/mwpopboo" method="POST">
+              <div class="faroj_form_group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="faroj_form_group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="faroj_form_group">
+                <label for="subject">Subjek</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Pilih subjek...</option>
+                  <option value="pertanyaan">Pertanyaan Produk</option>
+                  <option value="pengaduan">Pengaduan</option>
+                  <option value="kerjasama">Kerjasama</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              
+              <div class="faroj_form_group">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              
+              <button type="submit" class="faroj_submit_btn">
+                <span class="btn-text">Kirim Pesan</span>
+                <span class="btn-loading" style="display: none;">
+                  <div class="spinner"></div>
+                  Mengirim...
+                </span>
+              </button>
+            </form>
+            
+            <div id="formSuccess" class="faroj_form_success" style="display: none;">
+              <p>✅ Pesan Anda telah berhasil dikirim! Kami akan merespons secepatnya.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faroj_map_section">
+      <div class="faroj_map_container">
+        <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.906038204223!2d108.20986147499743!3d-7.198850392835771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f3f9b7b8d8d8d%3A0x2f4f4f4f4f4f4f4f!2sJl.%20HZ%2C%20Kec.%20Tawang%2C%20Kota%20Tasikmalaya%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643013979551!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer id="faroj_footer" class="faroj_footer">
+    <div class="faroj_footer_inner">
+      <div class="faroj_footer_col faroj_footer_brand">
+        <div class="faroj_logo" aria-hidden="true">
+          <img src="assets/logo.png" alt="StyleEase" width="200px" height="120px">
+        </div>
+        <div>
+          <strong>StyleEase</strong>
+          <div class="faroj_footer_tagline">Pakaian trendy & kualitas — Delivery cepat ke seluruh Indonesia.</div>
+        </div>
+      </div>
+      <div class="faroj_footer_col faroj_footer_links">
+        <h4>Menu</h4>
+        <nav>
+          <a href="toko.html">Toko</a>
+          <a href="faq.html">FAQ</a>
+          <a href="kontak.html">Kontak</a>
+          <a href="bukutamu.html">Buku Tamu</a>
+        </nav>
+      </div>
+      <div class="faroj_footer_col faroj_footer_contact">
+        <h4>Hubungi Kami</h4>
+        <div class="faroj_contact_line">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+628986735615">+62 898-6735-615</a>
+        </div>
+        <div class="faroj_contact_line">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:2303010075@unper.ac.id">2303010075@unper.ac.id</a>
+        </div>
+        <div class="faroj_social_links">
+          <a class="faroj_social_link" href="https://facebook.com/farojainurridlo.jhh" aria-label="Facebook" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="faroj_social_link" href="https://instagram.com/farojainurridlo_" aria-label="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="faroj_social_link" href="https://wa.me/628986735615?text=Halo%20StyleEase,%20saya%20ingin%20bertanya%20tentang%20produk%20anda." aria-label="Whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="faroj_credit">
+      © 2023-<span id="faroj_year"></span> StyleEase. All Rights Reserved<br>
+      <span class="faroj_powered">Powered by <a href="https://instagram.com/farojainurridlo_" target="_blank"> Faroj Ainurridlo</a></span>
+    </div>
+  </footer>
+
+  <div id="notification" class="faroj_notification"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

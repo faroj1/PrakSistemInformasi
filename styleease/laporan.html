@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StyleEase - Riwayat Pembelian</title>
+  <link rel="icon" type="image/png" href="assets/logo-favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="faroj_header" class="faroj_header">
+    <div class="faroj_brand">
+      <div class="faroj_logo" aria-hidden="true">
+        <img src="assets/logo-favicon.svg" alt="StyleEase" width="40" height="40">
+      </div>
+      <div class="faroj_brand_text">
+        <div class="faroj_title">StyleEase</div>
+        <div class="faroj_muted">Pakaian trendy & kualitas</div>
+      </div>
+    </div>
+
+    <nav class="faroj_menu" id="faroj_menu">
+      <button class="faroj_menu_toggle" id="faroj_menu_toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="faroj_menu_list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <ul class="faroj_menu_list" id="faroj_menu_list" role="menu">
+        <li><a href="index.html" class="faroj_menu_link">Home</a></li>
+        <li><a href="toko.html" class="faroj_menu_link">Toko</a></li>
+        <li><a href="tentang.html" class="faroj_menu_link">Tentang</a></li>
+        <li><a href="blog.html" class="faroj_menu_link">Blog</a></li>
+        <li><a href="kontak.html" class="faroj_menu_link">Kontak</a></li>
+        <li><a href="faq.html" class="faroj_menu_link">FAQ</a></li>
+        <li><a href="keranjang.html" class="faroj_menu_link faroj_cart_link" aria-label="Keranjang Belanja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 100 2 1 1 0 000-2z"/><path d="M20 20a1 1 0 100 2 1 1 0 000-2z"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span id="faroj_cart_count">0</span></a></li>
+        <li><a href="bukutamu.html" class="faroj_menu_link">Buku Tamu</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="faroj_main">
+    <div class="faroj_section">
+      <h1>Riwayat Pembelian</h1>
+      
+      <div class="faroj_filter_section">
+        <div class="faroj_filter_row">
+          <div class="faroj_filter_group">
+            <label for="filterTanggal">Filter Tanggal:</label>
+            <input type="date" id="filterTanggal" class="faroj_filter_input">
+          </div>
+          <div class="faroj_filter_group">
+            <label for="filterStatus">Status:</label>
+            <select id="filterStatus" class="faroj_filter_select">
+              <option value="">Semua Status</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Diproses</option>
+              <option value="shipped">Dikirim</option>
+              <option value="delivered">Diterima</option>
+              <option value="completed">Selesai</option>
+            </select>
+          </div>
+          <button id="btnFilter" class="faroj_btn">Terapkan Filter</button>
+          <button id="btnReset" class="faroj_btn_outline">Reset</button>
+        </div>
+      </div>
+
+      <div class="faroj_table_wrapper">
+        <table id="faroj_tabelRiwayat">
+          <thead>
+            <tr>
+              <th>No. Order</th>
+              <th>Tanggal</th>
+              <th>Produk</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="riwayatBody">
+            <!-- Data will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer id="faroj_footer" class="faroj_footer">
+    <div class="faroj_footer_inner">
+      <div class="faroj_footer_col faroj_footer_brand">
+        <div class="faroj_logo" aria-hidden="true">
+          <img src="assets/logo-inverse.svg" alt="StyleEase" width="120" height="120">
+        </div>
+        <div>
+          <strong>StyleEase</strong>
+          <div class="faroj_footer_tagline">Pakaian trendy & kualitas — Delivery cepat ke seluruh Indonesia.</div>
+        </div>
+      </div>
+      <div class="faroj_footer_col faroj_footer_links">
+        <h4>Menu</h4>
+        <nav>
+          <a href="toko.html">Toko</a>
+          <a href="faq.html">FAQ</a>
+          <a href="kontak.html">Kontak</a>
+          <a href="bukutamu.html">Buku Tamu</a>
+        </nav>
+      </div>
+      <div class="faroj_footer_col faroj_footer_contact">
+        <h4>Hubungi Kami</h4>
+        <div class="faroj_contact_line">📞 <a href="tel:+628123456789">+62 812-3456-789</a></div>
+        <div class="faroj_contact_line">✉️ <a href="mailto:hello@styleease.example">hello@styleease.example</a></div>
+        <div class="faroj_social_links">
+          <a class="faroj_social_link" href="#" aria-label="Facebook">FB</a>
+          <a class="faroj_social_link" href="#" aria-label="Instagram">IG</a>
+          <a class="faroj_social_link" href="#" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+    <div class="faroj_credit">
+      © 2023-<span id="faroj_year"></span> StyleEase. All Rights Reserved<br>
+      <span class="faroj_powered">Powered by <a href="https://instagram.com/farojainurridlo_" target="_blank">Faroj Ainurridlo</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
